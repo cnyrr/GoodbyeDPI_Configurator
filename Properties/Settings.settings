@@ -1,0 +1,121 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="GoodbyeDPI_Configurator.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="StartUpType" Type="System.String" Scope="User">
+      <Value Profile="(Default)">"manual"</Value>
+    </Setting>
+    <Setting Name="CurrentProfile" Type="System.String" Scope="User">
+      <Value Profile="(Default)">{
+    "Name": "Modern 9 (Default)",
+    "HTTPFragmentationEnabled": true,
+    "HTTPFragmentationValue": 2,
+    "HTTPSFragmentationEnabled": true,
+    "HTTPSFragmentationValue": 2,
+    "WrongSequence": true,
+    "WrongChecksum": true,
+    "ReverseFragmentation": true,
+    "MaxPayloadEnabled": true
+  }</Value>
+    </Setting>
+    <Setting Name="Profiles" Type="System.String" Scope="User">
+      <Value Profile="(Default)">[
+  {
+    "Name": "Legacy 1",
+    "BlockPassiveDPI": true,
+    "ReplaceHost": true,
+    "RemoveSpaceBetweenHeaderValue": true,
+    "DontWaitForFirstAck": true,
+    "HTTPFragmentationEnabled": true,
+    "HTTPFragmentationValue": 2,
+    "PHTTPFragmentationEnabled": true,
+    "PHTTPFragmentationValue": 2,
+    "HTTPSFragmentationEnabled": true,
+    "HTTPSFragmentationValue": 2
+  },
+  {
+    "Name": "Legacy 2",
+    "BlockPassiveDPI": true,
+    "ReplaceHost": true,
+    "RemoveSpaceBetweenHeaderValue": true,
+    "DontWaitForFirstAck": true,
+    "HTTPFragmentationEnabled": true,
+    "HTTPFragmentationValue": 2,
+    "PHTTPFragmentationEnabled": true,
+    "PHTTPFragmentationValue": 2,
+    "HTTPSFragmentationEnabled": true,
+    "HTTPSFragmentationValue": 40
+  },
+  {
+    "Name": "Legacy 3",
+    "BlockPassiveDPI": true,
+    "ReplaceHost": true,
+    "RemoveSpaceBetweenHeaderValue": true,
+    "HTTPSFragmentationEnabled": true,
+    "HTTPSFragmentationValue": 40
+  },
+  {
+    "Name": "Legacy 4",
+    "BlockPassiveDPI": true,
+    "ReplaceHost": true,
+    "RemoveSpaceBetweenHeaderValue": true
+  },
+  {
+    "Name": "Modern 5",
+    "HTTPFragmentationEnabled": true,
+    "HTTPFragmentationValue": 2,
+    "HTTPSFragmentationEnabled": true,
+    "HTTPSFragmentationValue": 2,
+    "AutoTTLBaseTopMaxEnabled": true,
+    "ReverseFragmentation": true,
+    "MaxPayloadEnabled": true
+  },
+  {
+    "Name": "Modern 6",
+    "HTTPFragmentationEnabled": true,
+    "HTTPFragmentationValue": 2,
+    "HTTPSFragmentationEnabled": true,
+    "HTTPSFragmentationValue": 2,
+    "WrongSequence": true,
+    "ReverseFragmentation": true,
+    "MaxPayloadEnabled": true
+  },
+  {
+    "Name": "Modern 7",
+    "HTTPFragmentationEnabled": true,
+    "HTTPFragmentationValue": 2,
+    "HTTPSFragmentationEnabled": true,
+    "HTTPSFragmentationValue": 2,
+    "WrongChecksum": true,
+    "ReverseFragmentation": true,
+    "MaxPayloadEnabled": true
+  },
+  {
+    "Name": "Modern 8",
+    "HTTPFragmentationEnabled": true,
+    "HTTPFragmentationValue": 2,
+    "HTTPSFragmentationEnabled": true,
+    "HTTPSFragmentationValue": 2,
+    "WrongSequence": true,
+    "WrongChecksum": true,
+    "ReverseFragmentation": true,
+    "MaxPayloadEnabled": true
+  },
+  {
+    "Name": "Modern 9 (Default)",
+    "HTTPFragmentationEnabled": true,
+    "HTTPFragmentationValue": 2,
+    "HTTPSFragmentationEnabled": true,
+    "HTTPSFragmentationValue": 2,
+    "WrongSequence": true,
+    "WrongChecksum": true,
+    "ReverseFragmentation": true,
+    "MaxPayloadEnabled": true
+  }
+]</Value>
+    </Setting>
+    <Setting Name="KillWinDivert" Type="System.String" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>
