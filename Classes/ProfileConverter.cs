@@ -1,5 +1,8 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
 using System.Text;
+using System.Text.Json;
 
 namespace GoodbyeDPI_Configurator.Classes
 {
@@ -132,6 +135,56 @@ namespace GoodbyeDPI_Configurator.Classes
         public static Profile ArgumentsToProfile(string arguments)
         {
             throw new NotImplementedException();
+        }
+
+        public static void ClipboardToProfile(ProfileManager pmanager, string clipboard)
+        {
+            // Backup the profiles.
+            BindingList<Profile> profiles = new BindingList<Profile>();
+
+            foreach (Profile profile in pmanager.Profiles)
+            {
+                profiles.Add(profile.DeepCopy());
+            }
+
+            // Try to add profiles from the clipboard.
+            if (clipboard.StartsWith("["))
+            {
+                // Try to add the profiles.
+                try
+                {
+                    foreach (Profile profile in JsonSerializer.Deserialize<List<Profile>>(clipboard))
+                    {
+                        pmanager.AddProfile(profile);
+                    }
+                }
+                // If it fails, restore the profiles.
+                catch (Exception)
+                {
+                    // I am not sure if we need this at all.
+                    pmanager.Profiles = profiles;
+                }
+            }
+            else if (clipboard.StartsWith("{"))
+            {
+                // Try to add the profile.
+                try
+                {
+                    pmanager.AddProfile(JsonSerializer.Deserialize<Profile>(clipboard));
+                }
+                // If it fails, do nothing.
+                catch (Exception) { }
+            }
+            else if (clipboard.StartsWith("-"))
+            {
+                // Try to add the profile from the arguments.
+                try
+                {
+                    pmanager.AddProfile(ProfileConverter.ArgumentsToProfile(clipboard));
+                }
+                // If it fails, do nothing.
+                catch (Exception) { }
+            }
         }
     }
 }

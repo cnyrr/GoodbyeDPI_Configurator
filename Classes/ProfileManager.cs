@@ -40,6 +40,8 @@ namespace GoodbyeDPI_Configurator.Classes
         {
             Profiles = JsonSerializer.Deserialize<BindingList<Profile>>(Properties.Settings.Default.Profiles);
             CurrentProfile = JsonSerializer.Deserialize<Profile>(Properties.Settings.Default.CurrentProfile);
+            Console.WriteLine("### DEBUG ###");
+            Console.WriteLine(ProfileConverter.ProfileToArguments(CurrentProfile));
         }
 
         internal void DeleteProfile(int index)
@@ -63,10 +65,15 @@ namespace GoodbyeDPI_Configurator.Classes
             CurrentProfile = Profiles.ElementAt(index).DeepCopy();
         }
 
-        internal void AddProfile(string new_name)
+        internal void CreateNewProfile(string new_name)
         {
             Profiles.Add(new Profile() { Name = new_name});
-            CurrentProfile = Profiles.Last();
+            SaveProfiles();
+        }
+
+        internal void AddProfile(Profile profile)
+        {
+            Profiles.Add(profile);
             SaveProfiles();
         }
 

@@ -1,6 +1,10 @@
 ﻿using GoodbyeDPI_Configurator.Classes;
 using System;
+using System.Collections.Generic;
+using System.ComponentModel;
 using System.Drawing;
+using System.Security.Cryptography;
+using System.Text.Json;
 using System.Windows.Forms;
 
 namespace GoodByeDPI_Configurator
@@ -35,6 +39,7 @@ namespace GoodByeDPI_Configurator
             // Bind the profile to the UI.
             BindControlsToProfile();
         }
+
 
         // TODO: There must be a better way of doing this.
         private void LoadToolTips()
@@ -83,7 +88,18 @@ namespace GoodByeDPI_Configurator
             toolTip.SetToolTip(RemoveButton, "Removes the service and installed files.");
             toolTip.SetToolTip(InstallButton, "Installs the service.");
 
+            toolTip.SetToolTip(ProfileLoadButton, "Load selected profile.");
+            toolTip.SetToolTip(ProfileSaveButton, "Save current profile to selected profile.");
+            toolTip.SetToolTip(ProfileDeleteButton, "Delete selected profile.");
+            toolTip.SetToolTip(ProfileAddButton, "Add empty profile with given name.");
+            toolTip.SetToolTip(ProfileAddVBox, "Name of the new profile.");
+            toolTip.SetToolTip(ProfileListBox, "Double click on a profile to load\nCTRL: Double-click to rename.");
+
+            toolTip.SetToolTip(ProfileCopyButton, "Copy the current profile as arguments to the clipboard.\nSHIFT: Copy current profile in JSON format.\nCTRL: Copy all profiles in JSON format.");
+            toolTip.SetToolTip(ProfilePasteButton, "Add profile(s) from the clipboard.");
+
             // TODO: Add more tooltips.
+
         }
 
         /*
@@ -145,22 +161,39 @@ namespace GoodByeDPI_Configurator
             ProfileManager.DeleteProfile(ProfileListBox.SelectedIndex);
         }
 
+        // TODO: Selected index handle.
+
         /// <summary>
-        /// Designer placement isn't final.
-        /// Still haven't decided on this.
+        /// Copies the current profile to the clipboard depending on the modifier keys.
+        /// Ctrl: All profiles as JSON.
+        /// Shift: Current profile as JSON.
+        /// None: Current profile as arguments.
         /// </summary>
         private void ProfileCopyButton_Click(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
-        }
+            switch (ModifierKeys)
+            {
+                // User wants all profiles.
+                case Keys.Control:
+                    Clipboard.SetText(JsonSerializer.Serialize(ProfileManager.Profiles));
+                    break;
+                // User wants the current profile.
+                case Keys.Shift:
+                    Clipboard.SetText(JsonSerializer.Serialize<Profile>(ProfileManager.CurrentProfile));
+                    break;
+                // User wants the current profile as arguments.
+                default:
+                    Clipboard.SetText(ProfileConverter.ProfileToArguments(ProfileManager.CurrentProfile));
+                    break;
+                }
+            }
 
         /// <summary>
-        /// Designer placement isn't final.
-        /// Still haven't decided on this.
+        /// Tries to create the profile(s) from the clipboard.
         /// </summary>
         private void ProfilePasteButton_Click(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
+            ProfileConverter.ClipboardToProfile(ProfileManager, Clipboard.GetText());
         }
 
         /// <summary>
@@ -172,11 +205,12 @@ namespace GoodByeDPI_Configurator
         }
 
         /// <summary>
-        /// Creates a new <see cref="Profile"/> with the name in the text box.
+        /// Creates a new <see cref="Profile"/> with the name in the text box then loads it.
         /// </summary>
         private void ProfileAddButton_Click(object sender, EventArgs e)
         {
-            ProfileManager.AddProfile(ProfileAddVBox.Text);
+            ProfileManager.AddProfile(ProfileManager.CurrentProfile);
+            ProfileManager.LoadProfile(ProfileManager.Profiles.Count - 1);
         }
 
         /*
@@ -326,32 +360,41 @@ namespace GoodByeDPI_Configurator
         /// </summary>
         private void ProfileListBox_MouseDoubleClick(object sender, MouseEventArgs e)
         {
+
             if (ProfileListBox.SelectedIndex != -1)
             {
-                // Create a temporary textbox.
-                TextBox EditProfileNameVBox = new TextBox();
+                switch (ModifierKeys)
+                {
+                    case Keys.Control:
+                        // Create a temporary textbox.
+                        TextBox EditProfileNameVBox = new TextBox();
 
-                // Get the location of selected item.
-                Rectangle itemRectangle = ProfileListBox.GetItemRectangle(ProfileListBox.SelectedIndex);
+                        // Get the location of selected item.
+                        Rectangle itemRectangle = ProfileListBox.GetItemRectangle(ProfileListBox.SelectedIndex);
 
-                // Event handlers to handle the editing.
-                EditProfileNameVBox.KeyDown += EditProfileNameVBox_KeyDown;
-                EditProfileNameVBox.LostFocus += EditProfileNameVBox_LostFocus;
+                        // Event handlers to handle the editing.
+                        EditProfileNameVBox.KeyDown += EditProfileNameVBox_KeyDown;
+                        EditProfileNameVBox.LostFocus += EditProfileNameVBox_LostFocus;
 
-                // Set the bounds of the textbox.
-                EditProfileNameVBox.SetBounds(itemRectangle.X, itemRectangle.Y, itemRectangle.Width, itemRectangle.Height - 15);
+                        // Set the bounds of the textbox.
+                        EditProfileNameVBox.SetBounds(itemRectangle.X, itemRectangle.Y, itemRectangle.Width, itemRectangle.Height - 15);
 
-                // Set the text of the textbox.
-                EditProfileNameVBox.Text = (ProfileListBox.SelectedItem as Profile).Name;
-                EditProfileNameVBox.BorderStyle = BorderStyle.None;
-                EditProfileNameVBox.Visible = true;
+                        // Set the text of the textbox.
+                        EditProfileNameVBox.Text = (ProfileListBox.SelectedItem as Profile).Name;
+                        EditProfileNameVBox.BorderStyle = BorderStyle.None;
+                        EditProfileNameVBox.Visible = true;
 
-                // Add the textbox to the listbox as control.
-                ProfileListBox.Controls.Add(EditProfileNameVBox);
+                        // Add the textbox to the listbox as control.
+                        ProfileListBox.Controls.Add(EditProfileNameVBox);
 
-                // Focus and select all the text in the textbox.
-                EditProfileNameVBox.Focus();
-                EditProfileNameVBox.SelectAll();
+                        // Focus and select all the text in the textbox.
+                        EditProfileNameVBox.Focus();
+                        EditProfileNameVBox.SelectAll();
+                        break;
+                    default:
+                        ProfileLoadButton_Click(sender, e);
+                        break;
+                }
             }
         }
 

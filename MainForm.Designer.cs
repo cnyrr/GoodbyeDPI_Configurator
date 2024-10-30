@@ -95,6 +95,8 @@
             this.AddBlacklistButton = new System.Windows.Forms.Button();
             this.BlacklistListBox = new System.Windows.Forms.ListBox();
             this.StatusGBox = new System.Windows.Forms.GroupBox();
+            this.StopButton = new System.Windows.Forms.Button();
+            this.LaunchButton = new System.Windows.Forms.Button();
             this.KillWinDivertCBox = new System.Windows.Forms.CheckBox();
             this.InternetAccessLabel = new System.Windows.Forms.Label();
             this.InternetAccessInfoLabel = new System.Windows.Forms.Label();
@@ -102,8 +104,6 @@
             this.InstallButton = new System.Windows.Forms.Button();
             this.ServiceStatusLabel = new System.Windows.Forms.Label();
             this.ServiceStatusInfoLabel = new System.Windows.Forms.Label();
-            this.LaunchButton = new System.Windows.Forms.Button();
-            this.StopButton = new System.Windows.Forms.Button();
             this.ProfilesGBox.SuspendLayout();
             this.SettingsGBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.MaxPayloadNBox)).BeginInit();
@@ -138,7 +138,7 @@
             this.ProfilesGBox.Controls.Add(this.ProfileListBox);
             this.ProfilesGBox.Location = new System.Drawing.Point(672, 152);
             this.ProfilesGBox.Name = "ProfilesGBox";
-            this.ProfilesGBox.Size = new System.Drawing.Size(245, 177);
+            this.ProfilesGBox.Size = new System.Drawing.Size(245, 207);
             this.ProfilesGBox.TabIndex = 13;
             this.ProfilesGBox.TabStop = false;
             this.ProfilesGBox.Text = "Default Profiles";
@@ -155,7 +155,7 @@
             // 
             // ProfileAddButton
             // 
-            this.ProfileAddButton.Location = new System.Drawing.Point(164, 147);
+            this.ProfileAddButton.Location = new System.Drawing.Point(164, 175);
             this.ProfileAddButton.Name = "ProfileAddButton";
             this.ProfileAddButton.Size = new System.Drawing.Size(75, 23);
             this.ProfileAddButton.TabIndex = 38;
@@ -165,7 +165,7 @@
             // 
             // ProfileAddVBox
             // 
-            this.ProfileAddVBox.Location = new System.Drawing.Point(6, 149);
+            this.ProfileAddVBox.Location = new System.Drawing.Point(6, 177);
             this.ProfileAddVBox.Name = "ProfileAddVBox";
             this.ProfileAddVBox.Size = new System.Drawing.Size(152, 20);
             this.ProfileAddVBox.TabIndex = 37;
@@ -174,7 +174,7 @@
             // 
             // ProfilePasteButton
             // 
-            this.ProfilePasteButton.Location = new System.Drawing.Point(83, 119);
+            this.ProfilePasteButton.Location = new System.Drawing.Point(164, 134);
             this.ProfilePasteButton.Name = "ProfilePasteButton";
             this.ProfilePasteButton.Size = new System.Drawing.Size(75, 23);
             this.ProfilePasteButton.TabIndex = 20;
@@ -184,7 +184,7 @@
             // 
             // ProfileCopyButton
             // 
-            this.ProfileCopyButton.Location = new System.Drawing.Point(6, 119);
+            this.ProfileCopyButton.Location = new System.Drawing.Point(164, 105);
             this.ProfileCopyButton.Name = "ProfileCopyButton";
             this.ProfileCopyButton.Size = new System.Drawing.Size(75, 23);
             this.ProfileCopyButton.TabIndex = 19;
@@ -233,7 +233,7 @@
             this.ProfileListBox.FormattingEnabled = true;
             this.ProfileListBox.Location = new System.Drawing.Point(6, 18);
             this.ProfileListBox.Name = "ProfileListBox";
-            this.ProfileListBox.Size = new System.Drawing.Size(152, 95);
+            this.ProfileListBox.Size = new System.Drawing.Size(152, 147);
             this.ProfileListBox.TabIndex = 14;
             this.ProfileListBox.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.ProfileListBox_MouseDoubleClick);
             // 
@@ -262,7 +262,7 @@
             this.SettingsGBox.Controls.Add(this.BlockPassiveCBox);
             this.SettingsGBox.Location = new System.Drawing.Point(12, 12);
             this.SettingsGBox.Name = "SettingsGBox";
-            this.SettingsGBox.Size = new System.Drawing.Size(350, 524);
+            this.SettingsGBox.Size = new System.Drawing.Size(350, 532);
             this.SettingsGBox.TabIndex = 14;
             this.SettingsGBox.TabStop = false;
             this.SettingsGBox.Text = "Settings";
@@ -512,7 +512,7 @@
             this.FakePacketSettingsGBox.Controls.Add(this.AutoTTLScalerBaseNBox);
             this.FakePacketSettingsGBox.Location = new System.Drawing.Point(368, 267);
             this.FakePacketSettingsGBox.Name = "FakePacketSettingsGBox";
-            this.FakePacketSettingsGBox.Size = new System.Drawing.Size(298, 269);
+            this.FakePacketSettingsGBox.Size = new System.Drawing.Size(298, 277);
             this.FakePacketSettingsGBox.TabIndex = 15;
             this.FakePacketSettingsGBox.TabStop = false;
             this.FakePacketSettingsGBox.Text = "Fake Packet Settings";
@@ -715,9 +715,9 @@
             this.MiscellaneousGBox.Controls.Add(this.AddBlacklistButton);
             this.MiscellaneousGBox.Controls.Add(this.BlacklistListBox);
             this.MiscellaneousGBox.Enabled = false;
-            this.MiscellaneousGBox.Location = new System.Drawing.Point(672, 328);
+            this.MiscellaneousGBox.Location = new System.Drawing.Point(672, 365);
             this.MiscellaneousGBox.Name = "MiscellaneousGBox";
-            this.MiscellaneousGBox.Size = new System.Drawing.Size(245, 208);
+            this.MiscellaneousGBox.Size = new System.Drawing.Size(245, 179);
             this.MiscellaneousGBox.TabIndex = 17;
             this.MiscellaneousGBox.TabStop = false;
             this.MiscellaneousGBox.Text = "Miscallaneous";
@@ -826,6 +826,26 @@
             this.StatusGBox.TabStop = false;
             this.StatusGBox.Text = "Status";
             // 
+            // StopButton
+            // 
+            this.StopButton.Location = new System.Drawing.Point(6, 76);
+            this.StopButton.Name = "StopButton";
+            this.StopButton.Size = new System.Drawing.Size(95, 23);
+            this.StopButton.TabIndex = 18;
+            this.StopButton.Text = "Stop";
+            this.StopButton.UseVisualStyleBackColor = true;
+            this.StopButton.Click += new System.EventHandler(this.StopButton_Click);
+            // 
+            // LaunchButton
+            // 
+            this.LaunchButton.Location = new System.Drawing.Point(144, 76);
+            this.LaunchButton.Name = "LaunchButton";
+            this.LaunchButton.Size = new System.Drawing.Size(95, 23);
+            this.LaunchButton.TabIndex = 17;
+            this.LaunchButton.Text = "Launch";
+            this.LaunchButton.UseVisualStyleBackColor = true;
+            this.LaunchButton.Click += new System.EventHandler(this.LaunchButton_Click);
+            // 
             // KillWinDivertCBox
             // 
             this.KillWinDivertCBox.AutoSize = true;
@@ -894,31 +914,11 @@
             this.ServiceStatusInfoLabel.TabIndex = 0;
             this.ServiceStatusInfoLabel.Text = "GoodByeDPI Service:";
             // 
-            // LaunchButton
-            // 
-            this.LaunchButton.Location = new System.Drawing.Point(144, 76);
-            this.LaunchButton.Name = "LaunchButton";
-            this.LaunchButton.Size = new System.Drawing.Size(95, 23);
-            this.LaunchButton.TabIndex = 17;
-            this.LaunchButton.Text = "Launch";
-            this.LaunchButton.UseVisualStyleBackColor = true;
-            this.LaunchButton.Click += new System.EventHandler(this.LaunchButton_Click);
-            // 
-            // StopButton
-            // 
-            this.StopButton.Location = new System.Drawing.Point(6, 76);
-            this.StopButton.Name = "StopButton";
-            this.StopButton.Size = new System.Drawing.Size(95, 23);
-            this.StopButton.TabIndex = 18;
-            this.StopButton.Text = "Stop";
-            this.StopButton.UseVisualStyleBackColor = true;
-            this.StopButton.Click += new System.EventHandler(this.StopButton_Click);
-            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(929, 543);
+            this.ClientSize = new System.Drawing.Size(929, 548);
             this.Controls.Add(this.StatusGBox);
             this.Controls.Add(this.MiscellaneousGBox);
             this.Controls.Add(this.DNSSettingsGBox);
