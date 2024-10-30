@@ -102,6 +102,8 @@
             this.InstallButton = new System.Windows.Forms.Button();
             this.ServiceStatusLabel = new System.Windows.Forms.Label();
             this.ServiceStatusInfoLabel = new System.Windows.Forms.Label();
+            this.LaunchButton = new System.Windows.Forms.Button();
+            this.StopButton = new System.Windows.Forms.Button();
             this.ProfilesGBox.SuspendLayout();
             this.SettingsGBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.MaxPayloadNBox)).BeginInit();
@@ -808,6 +810,8 @@
             // 
             // StatusGBox
             // 
+            this.StatusGBox.Controls.Add(this.StopButton);
+            this.StatusGBox.Controls.Add(this.LaunchButton);
             this.StatusGBox.Controls.Add(this.KillWinDivertCBox);
             this.StatusGBox.Controls.Add(this.InternetAccessLabel);
             this.StatusGBox.Controls.Add(this.InternetAccessInfoLabel);
@@ -889,6 +893,26 @@
             this.ServiceStatusInfoLabel.Size = new System.Drawing.Size(111, 13);
             this.ServiceStatusInfoLabel.TabIndex = 0;
             this.ServiceStatusInfoLabel.Text = "GoodByeDPI Service:";
+            // 
+            // LaunchButton
+            // 
+            this.LaunchButton.Location = new System.Drawing.Point(144, 76);
+            this.LaunchButton.Name = "LaunchButton";
+            this.LaunchButton.Size = new System.Drawing.Size(95, 23);
+            this.LaunchButton.TabIndex = 17;
+            this.LaunchButton.Text = "Launch";
+            this.LaunchButton.UseVisualStyleBackColor = true;
+            this.LaunchButton.Click += new System.EventHandler(this.LaunchButton_Click);
+            // 
+            // StopButton
+            // 
+            this.StopButton.Location = new System.Drawing.Point(6, 76);
+            this.StopButton.Name = "StopButton";
+            this.StopButton.Size = new System.Drawing.Size(95, 23);
+            this.StopButton.TabIndex = 18;
+            this.StopButton.Text = "Stop";
+            this.StopButton.UseVisualStyleBackColor = true;
+            this.StopButton.Click += new System.EventHandler(this.StopButton_Click);
             // 
             // MainForm
             // 
@@ -1009,6 +1033,8 @@
         private System.Windows.Forms.TextBox ProfileAddVBox;
         private System.Windows.Forms.Button ProfileSaveButton;
         private System.Windows.Forms.CheckBox KillWinDivertCBox;
+        private System.Windows.Forms.Button StopButton;
+        private System.Windows.Forms.Button LaunchButton;
     }
 }
 

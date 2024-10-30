@@ -8,7 +8,7 @@ namespace GoodByeDPI_Configurator
     public partial class MainForm : Form
     {
         // Handles the GoodbyeDPI Service.
-        private readonly ServiceHandler ServiceHandler = new ServiceHandler();
+        private readonly RunHandler RunHandler = new RunHandler();
         // Handles the Profiles.
         private readonly ProfileManager ProfileManager = new ProfileManager();
 
@@ -87,15 +87,25 @@ namespace GoodByeDPI_Configurator
         }
 
         /*
-           FUNCTIONS RELATED TO SERVICE HANDLER.
+           FUNCTIONS RELATED TO RUNHANDLER.
         */
         private void InstallButton_Click(object sender, EventArgs e)
         {
-            ServiceHandler.InstallService();
+            RunHandler.InstallService(ProfileManager.CurrentProfile);
         }
         private void RemoveButton_Click(object sender, EventArgs e)
         {
-            ServiceHandler.RemoveService();
+            RunHandler.Uninstall();
+        }
+
+        private void LaunchButton_Click(object sender, EventArgs e)
+        {
+            RunHandler.Launch(ProfileManager.CurrentProfile);
+        }
+
+        private void StopButton_Click(object sender, EventArgs e)
+        {
+            RunHandler.Stop();
         }
 
         /*

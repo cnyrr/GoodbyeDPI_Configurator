@@ -39,9 +39,6 @@ namespace GoodbyeDPI_Configurator.Classes
         internal ProfileManager()
         {
             Profiles = JsonSerializer.Deserialize<BindingList<Profile>>(Properties.Settings.Default.Profiles);
-
-            Console.WriteLine(Properties.Settings.Default.Profiles);
-
             CurrentProfile = JsonSerializer.Deserialize<Profile>(Properties.Settings.Default.CurrentProfile);
         }
 

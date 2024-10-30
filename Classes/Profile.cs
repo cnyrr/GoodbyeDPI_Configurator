@@ -2,6 +2,7 @@
 using System.Text.Json.Serialization;
 using System;
 using System.Text.Json;
+using System.Runtime.CompilerServices;
 
 namespace GoodbyeDPI_Configurator.Classes
 {
@@ -626,6 +627,11 @@ namespace GoodbyeDPI_Configurator.Classes
         internal Profile DeepCopy()
         {
             return JsonSerializer.Deserialize<Profile>(JsonSerializer.Serialize(this));
+        }
+
+        internal string ToArguments()
+        {
+            return ProfileConverter.ProfileToArguments(this);
         }
     }
 }
