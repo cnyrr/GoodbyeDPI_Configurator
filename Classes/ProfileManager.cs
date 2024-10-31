@@ -77,7 +77,7 @@ namespace GoodbyeDPI_Configurator.Classes
             SaveProfiles();
         }
 
-        private void SaveProfiles()
+        internal void SaveProfiles()
         {
             Properties.Settings.Default.Profiles = JsonSerializer.Serialize(Profiles);
             Properties.Settings.Default.CurrentProfile = JsonSerializer.Serialize(CurrentProfile);

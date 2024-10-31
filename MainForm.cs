@@ -5,6 +5,7 @@ using System.ComponentModel;
 using System.Drawing;
 using System.Security.Cryptography;
 using System.Text.Json;
+using System.Text.RegularExpressions;
 using System.Windows.Forms;
 
 namespace GoodByeDPI_Configurator
@@ -438,6 +439,43 @@ namespace GoodByeDPI_Configurator
 
             ProfileListBox.Controls.Remove(EditProfileNameVBox);
             EditProfileNameVBox.Dispose();
+        }
+
+        /// <summary>
+        /// Check if the IPv4 DNS address is valid.
+        /// </summary>
+        private void IPV4DNSAddressVBox_Leave(object sender, EventArgs e)
+        {
+            // Note: This regex is from internet.
+            Regex ipv6regex = new Regex(@"^(25[0-5]|2[0-4][0-9]|1[0-9]{2}|[1-9]?[0-9])\.(25[0-5]|2[0-4][0-9]|1[0-9]{2}|[1-9]?[0-9])\.(25[0-5]|2[0-4][0-9]|1[0-9]{2}|[1-9]?[0-9])\.(25[0-5]|2[0-4][0-9]|1[0-9]{2}|[1-9]?[0-9])$");
+
+            if (!ipv6regex.IsMatch((sender as TextBox).Text))
+            {
+                (sender as TextBox).Text = "";
+            }
+        }
+
+        /// <summary>
+        /// Check if the IPv6 DNS address is valid.
+        /// </summary>
+        private void IPV6DNSAddressVBox_Leave(object sender, EventArgs e)
+        {
+            // Note: This regex is from internet.
+            Regex ipv6regex = new Regex(@"^^(([0-9a-fA-F]{1,4}:){7}([0-9a-fA-F]{1,4}|:)|(([0-9a-fA-F]{1,4}:){1,7}:)|(([0-9a-fA-F]{1,4}:){1,6}(:[0-9a-fA-F]{1,4}){1,1})|(([0-9a-fA-F]{1,4}:){1,5}(:[0-9a-fA-F]{1,4}){1,2})|(([0-9a-fA-F]{1,4}:){1,4}(:[0-9a-fA-F]{1,4}){1,3})|(([0-9a-fA-F]{1,4}:){1,3}(:[0-9a-fA-F]{1,4}){1,4})|(([0-9a-fA-F]{1,4}:){1,2}(:[0-9a-fA-F]{1,4}){1,5})|([0-9a-fA-F]{1,4}:)((:[0-9a-fA-F]{1,4}){1,6})|:((:[0-9a-fA-F]{1,4}){1,7}|:)|::(ffff(:0{1,4}){0,1}:){0,1}((25[0-5]|2[0-4][0-9]|[01]?[0-9]?[0-9])\.){3,3}(25[0-5]|2[0-4][0-9]|[01]?[0-9]?[0-9])|([0-9a-fA-F]{1,4}:){1,4}:((25[0-5]|2[0-4][0-9]|[01]?[0-9]?[0-9])\.){3,3}(25[0-5]|2[0-4][0-9]|[01]?[0-9]?[0-9]))$");
+
+            if (!ipv6regex.IsMatch((sender as TextBox).Text))
+            {
+                (sender as TextBox).Text = "";
+            }
+        }
+
+        /// <summary>
+        /// Save the profiles on application exit.
+        /// </summary>
+        private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            // Save the profiles.
+            ProfileManager.SaveProfiles();
         }
     }
 }

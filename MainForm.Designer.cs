@@ -664,6 +664,7 @@
             this.IPV6DNSAddressVBox.Name = "IPV6DNSAddressVBox";
             this.IPV6DNSAddressVBox.Size = new System.Drawing.Size(152, 20);
             this.IPV6DNSAddressVBox.TabIndex = 32;
+            this.IPV6DNSAddressVBox.Leave += new System.EventHandler(this.IPV6DNSAddressVBox_Leave);
             // 
             // IPV6DNSAddressCBox
             // 
@@ -691,6 +692,7 @@
             this.IPV4DNSAddressVBox.Name = "IPV4DNSAddressVBox";
             this.IPV4DNSAddressVBox.Size = new System.Drawing.Size(152, 20);
             this.IPV4DNSAddressVBox.TabIndex = 28;
+            this.IPV4DNSAddressVBox.Leave += new System.EventHandler(this.IPV4DNSAddressVBox_Leave);
             // 
             // IPV4DNSAddressCBox
             // 
@@ -929,6 +931,7 @@
             this.MaximizeBox = false;
             this.Name = "MainForm";
             this.Text = "GoodbyeDPI Configurator";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainForm_FormClosing);
             this.Load += new System.EventHandler(this.MainForm_Load);
             this.ProfilesGBox.ResumeLayout(false);
             this.ProfilesGBox.PerformLayout();
