@@ -469,6 +469,14 @@ namespace GoodByeDPI_Configurator
             }
         }
 
+        private void Check16BitValue(object sender, EventArgs e)
+        {
+            if ((sender as NumericUpDown).Value > 65535)
+            {
+                (sender as NumericUpDown).Value = 65535;
+            }
+        }
+
         /// <summary>
         /// Save the profiles on application exit.
         /// </summary>

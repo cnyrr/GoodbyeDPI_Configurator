@@ -554,6 +554,11 @@
             // AutoTTLMaxNBox
             // 
             this.AutoTTLMaxNBox.Location = new System.Drawing.Point(94, 114);
+            this.AutoTTLMaxNBox.Maximum = new decimal(new int[] {
+            255,
+            0,
+            0,
+            0});
             this.AutoTTLMaxNBox.Name = "AutoTTLMaxNBox";
             this.AutoTTLMaxNBox.Size = new System.Drawing.Size(38, 20);
             this.AutoTTLMaxNBox.TabIndex = 42;
@@ -561,6 +566,11 @@
             // AutoTTLScalerTopNBox
             // 
             this.AutoTTLScalerTopNBox.Location = new System.Drawing.Point(50, 114);
+            this.AutoTTLScalerTopNBox.Maximum = new decimal(new int[] {
+            255,
+            0,
+            0,
+            0});
             this.AutoTTLScalerTopNBox.Name = "AutoTTLScalerTopNBox";
             this.AutoTTLScalerTopNBox.Size = new System.Drawing.Size(38, 20);
             this.AutoTTLScalerTopNBox.TabIndex = 41;
@@ -568,6 +578,11 @@
             // MinimumTTLNBox
             // 
             this.MinimumTTLNBox.Location = new System.Drawing.Point(6, 163);
+            this.MinimumTTLNBox.Maximum = new decimal(new int[] {
+            255,
+            0,
+            0,
+            0});
             this.MinimumTTLNBox.Name = "MinimumTTLNBox";
             this.MinimumTTLNBox.Size = new System.Drawing.Size(100, 20);
             this.MinimumTTLNBox.TabIndex = 40;
@@ -575,6 +590,11 @@
             // CustomTTLNBox
             // 
             this.CustomTTLNBox.Location = new System.Drawing.Point(6, 65);
+            this.CustomTTLNBox.Maximum = new decimal(new int[] {
+            255,
+            0,
+            0,
+            0});
             this.CustomTTLNBox.Name = "CustomTTLNBox";
             this.CustomTTLNBox.Size = new System.Drawing.Size(100, 20);
             this.CustomTTLNBox.TabIndex = 38;
@@ -612,6 +632,11 @@
             // AutoTTLScalerBaseNBox
             // 
             this.AutoTTLScalerBaseNBox.Location = new System.Drawing.Point(6, 114);
+            this.AutoTTLScalerBaseNBox.Maximum = new decimal(new int[] {
+            255,
+            0,
+            0,
+            0});
             this.AutoTTLScalerBaseNBox.Name = "AutoTTLScalerBaseNBox";
             this.AutoTTLScalerBaseNBox.Size = new System.Drawing.Size(38, 20);
             this.AutoTTLScalerBaseNBox.TabIndex = 39;
@@ -637,6 +662,11 @@
             // IPV6DNSPortNBox
             // 
             this.IPV6DNSPortNBox.Location = new System.Drawing.Point(6, 189);
+            this.IPV6DNSPortNBox.Maximum = new decimal(new int[] {
+            65535,
+            0,
+            0,
+            0});
             this.IPV6DNSPortNBox.Name = "IPV6DNSPortNBox";
             this.IPV6DNSPortNBox.Size = new System.Drawing.Size(100, 20);
             this.IPV6DNSPortNBox.TabIndex = 43;
@@ -644,6 +674,11 @@
             // IPV4DNSPortNBox
             // 
             this.IPV4DNSPortNBox.Location = new System.Drawing.Point(6, 91);
+            this.IPV4DNSPortNBox.Maximum = new decimal(new int[] {
+            65535,
+            0,
+            0,
+            0});
             this.IPV4DNSPortNBox.Name = "IPV4DNSPortNBox";
             this.IPV4DNSPortNBox.Size = new System.Drawing.Size(100, 20);
             this.IPV4DNSPortNBox.TabIndex = 42;
