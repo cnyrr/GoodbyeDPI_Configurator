@@ -12,6 +12,7 @@ namespace GoodbyeDPI_Configurator.Classes
         // Private fields.
         [JsonIgnore] private string _name;
         [JsonIgnore] private bool _blockPassiveDPI = false;
+        [JsonIgnore] private bool _blockQUICHTTP3 = false;
         [JsonIgnore] private bool _replaceHost = false;
         [JsonIgnore] private bool _removeSpaceBetweenHeaderValue = false;
         [JsonIgnore] private bool _mixHeaderCase = false;
@@ -90,6 +91,19 @@ namespace GoodbyeDPI_Configurator.Classes
                 {
                     _blockPassiveDPI = value;
                     OnPropertyChanged(nameof(BlockPassiveDPI));
+                }
+            }
+        }
+
+        public bool BlockQUICHTTP3
+        {
+            get => _blockQUICHTTP3;
+            set
+            {
+                if (_blockQUICHTTP3 != value)
+                {
+                    _blockQUICHTTP3 = value;
+                    OnPropertyChanged(nameof(BlockQUICHTTP3));
                 }
             }
         }

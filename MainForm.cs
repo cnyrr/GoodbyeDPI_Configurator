@@ -239,6 +239,7 @@ namespace GoodByeDPI_Configurator
         private void ClearControlBindsToProfile()
         {
             BlockPassiveCBox.DataBindings.Clear();
+            BlockQUICCBox.DataBindings.Clear();
             ReplaceHostCBox.DataBindings.Clear();
             RemoveSpaceBetweenHeaderValueCBox.DataBindings.Clear();
             MixHeaderCBox.DataBindings.Clear();
@@ -288,6 +289,8 @@ namespace GoodByeDPI_Configurator
         {
             // Block Passive -p
             BlockPassiveCBox.DataBindings.Add("Checked", ProfileManager.CurrentProfile, "BlockPassiveDPI", false, DataSourceUpdateMode.OnPropertyChanged);
+            // Block QUIC/HTTP3 -q
+            BlockQUICCBox.DataBindings.Add("Checked", ProfileManager.CurrentProfile, "BlockQUICHTTP3", false, DataSourceUpdateMode.OnPropertyChanged);
             // Replace Host -r
             ReplaceHostCBox.DataBindings.Add("Checked", ProfileManager.CurrentProfile, "ReplaceHost", false, DataSourceUpdateMode.OnPropertyChanged);
             // Remove Space Between Header Value -s

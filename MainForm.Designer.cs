@@ -104,6 +104,7 @@
             this.InstallButton = new System.Windows.Forms.Button();
             this.ServiceStatusLabel = new System.Windows.Forms.Label();
             this.ServiceStatusInfoLabel = new System.Windows.Forms.Label();
+            this.BlockQUICCBox = new System.Windows.Forms.CheckBox();
             this.ProfilesGBox.SuspendLayout();
             this.SettingsGBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.MaxPayloadNBox)).BeginInit();
@@ -239,6 +240,7 @@
             // 
             // SettingsGBox
             // 
+            this.SettingsGBox.Controls.Add(this.BlockQUICCBox);
             this.SettingsGBox.Controls.Add(this.MaxPayloadNBox);
             this.SettingsGBox.Controls.Add(this.ExtraTCPPortToFragmentNBox);
             this.SettingsGBox.Controls.Add(this.HTTPSFragmentationNBox);
@@ -262,14 +264,14 @@
             this.SettingsGBox.Controls.Add(this.BlockPassiveCBox);
             this.SettingsGBox.Location = new System.Drawing.Point(12, 12);
             this.SettingsGBox.Name = "SettingsGBox";
-            this.SettingsGBox.Size = new System.Drawing.Size(350, 532);
+            this.SettingsGBox.Size = new System.Drawing.Size(350, 557);
             this.SettingsGBox.TabIndex = 14;
             this.SettingsGBox.TabStop = false;
             this.SettingsGBox.Text = "Settings";
             // 
             // MaxPayloadNBox
             // 
-            this.MaxPayloadNBox.Location = new System.Drawing.Point(6, 491);
+            this.MaxPayloadNBox.Location = new System.Drawing.Point(6, 514);
             this.MaxPayloadNBox.Maximum = new decimal(new int[] {
             65535,
             0,
@@ -281,7 +283,7 @@
             // 
             // ExtraTCPPortToFragmentNBox
             // 
-            this.ExtraTCPPortToFragmentNBox.Location = new System.Drawing.Point(6, 327);
+            this.ExtraTCPPortToFragmentNBox.Location = new System.Drawing.Point(6, 350);
             this.ExtraTCPPortToFragmentNBox.Maximum = new decimal(new int[] {
             65535,
             0,
@@ -293,7 +295,7 @@
             // 
             // HTTPSFragmentationNBox
             // 
-            this.HTTPSFragmentationNBox.Location = new System.Drawing.Point(6, 255);
+            this.HTTPSFragmentationNBox.Location = new System.Drawing.Point(6, 278);
             this.HTTPSFragmentationNBox.Maximum = new decimal(new int[] {
             65535,
             0,
@@ -305,7 +307,7 @@
             // 
             // PHTTPFragmentationNBox
             // 
-            this.PHTTPFragmentationNBox.Location = new System.Drawing.Point(6, 206);
+            this.PHTTPFragmentationNBox.Location = new System.Drawing.Point(6, 229);
             this.PHTTPFragmentationNBox.Maximum = new decimal(new int[] {
             65535,
             0,
@@ -317,7 +319,7 @@
             // 
             // HTTPFragmentationNBox
             // 
-            this.HTTPFragmentationNBox.Location = new System.Drawing.Point(6, 157);
+            this.HTTPFragmentationNBox.Location = new System.Drawing.Point(6, 180);
             this.HTTPFragmentationNBox.Maximum = new decimal(new int[] {
             65535,
             0,
@@ -330,7 +332,7 @@
             // MaxPayloadCBox
             // 
             this.MaxPayloadCBox.AutoSize = true;
-            this.MaxPayloadCBox.Location = new System.Drawing.Point(7, 468);
+            this.MaxPayloadCBox.Location = new System.Drawing.Point(7, 491);
             this.MaxPayloadCBox.Name = "MaxPayloadCBox";
             this.MaxPayloadCBox.Size = new System.Drawing.Size(187, 17);
             this.MaxPayloadCBox.TabIndex = 31;
@@ -340,7 +342,7 @@
             // ReverseFragmentationCBox
             // 
             this.ReverseFragmentationCBox.AutoSize = true;
-            this.ReverseFragmentationCBox.Location = new System.Drawing.Point(6, 445);
+            this.ReverseFragmentationCBox.Location = new System.Drawing.Point(6, 468);
             this.ReverseFragmentationCBox.Name = "ReverseFragmentationCBox";
             this.ReverseFragmentationCBox.Size = new System.Drawing.Size(209, 17);
             this.ReverseFragmentationCBox.TabIndex = 30;
@@ -350,7 +352,7 @@
             // NativeFragmentationCBox
             // 
             this.NativeFragmentationCBox.AutoSize = true;
-            this.NativeFragmentationCBox.Location = new System.Drawing.Point(6, 422);
+            this.NativeFragmentationCBox.Location = new System.Drawing.Point(6, 445);
             this.NativeFragmentationCBox.Name = "NativeFragmentationCBox";
             this.NativeFragmentationCBox.Size = new System.Drawing.Size(194, 17);
             this.NativeFragmentationCBox.TabIndex = 29;
@@ -360,7 +362,7 @@
             // FragmentSNICBox
             // 
             this.FragmentSNICBox.AutoSize = true;
-            this.FragmentSNICBox.Location = new System.Drawing.Point(6, 399);
+            this.FragmentSNICBox.Location = new System.Drawing.Point(6, 422);
             this.FragmentSNICBox.Name = "FragmentSNICBox";
             this.FragmentSNICBox.Size = new System.Drawing.Size(178, 17);
             this.FragmentSNICBox.TabIndex = 28;
@@ -370,7 +372,7 @@
             // CircumventWhenNoSNICBox
             // 
             this.CircumventWhenNoSNICBox.AutoSize = true;
-            this.CircumventWhenNoSNICBox.Location = new System.Drawing.Point(6, 376);
+            this.CircumventWhenNoSNICBox.Location = new System.Drawing.Point(6, 399);
             this.CircumventWhenNoSNICBox.Name = "CircumventWhenNoSNICBox";
             this.CircumventWhenNoSNICBox.Size = new System.Drawing.Size(338, 17);
             this.CircumventWhenNoSNICBox.TabIndex = 27;
@@ -380,7 +382,7 @@
             // ExtraTCPPortToFragmentCBox
             // 
             this.ExtraTCPPortToFragmentCBox.AutoSize = true;
-            this.ExtraTCPPortToFragmentCBox.Location = new System.Drawing.Point(6, 304);
+            this.ExtraTCPPortToFragmentCBox.Location = new System.Drawing.Point(6, 327);
             this.ExtraTCPPortToFragmentCBox.Name = "ExtraTCPPortToFragmentCBox";
             this.ExtraTCPPortToFragmentCBox.Size = new System.Drawing.Size(274, 17);
             this.ExtraTCPPortToFragmentCBox.TabIndex = 21;
@@ -390,7 +392,7 @@
             // ParseHTTPAllPortsCBox
             // 
             this.ParseHTTPAllPortsCBox.AutoSize = true;
-            this.ParseHTTPAllPortsCBox.Location = new System.Drawing.Point(6, 353);
+            this.ParseHTTPAllPortsCBox.Location = new System.Drawing.Point(6, 376);
             this.ParseHTTPAllPortsCBox.Name = "ParseHTTPAllPortsCBox";
             this.ParseHTTPAllPortsCBox.Size = new System.Drawing.Size(236, 17);
             this.ParseHTTPAllPortsCBox.TabIndex = 20;
@@ -400,7 +402,7 @@
             // ExtraSpaceBetweenMethodURICBox
             // 
             this.ExtraSpaceBetweenMethodURICBox.AutoSize = true;
-            this.ExtraSpaceBetweenMethodURICBox.Location = new System.Drawing.Point(6, 111);
+            this.ExtraSpaceBetweenMethodURICBox.Location = new System.Drawing.Point(6, 134);
             this.ExtraSpaceBetweenMethodURICBox.Name = "ExtraSpaceBetweenMethodURICBox";
             this.ExtraSpaceBetweenMethodURICBox.Size = new System.Drawing.Size(264, 17);
             this.ExtraSpaceBetweenMethodURICBox.TabIndex = 19;
@@ -410,7 +412,7 @@
             // HTTPSFragmentationCBox
             // 
             this.HTTPSFragmentationCBox.AutoSize = true;
-            this.HTTPSFragmentationCBox.Location = new System.Drawing.Point(6, 232);
+            this.HTTPSFragmentationCBox.Location = new System.Drawing.Point(6, 255);
             this.HTTPSFragmentationCBox.Name = "HTTPSFragmentationCBox";
             this.HTTPSFragmentationCBox.Size = new System.Drawing.Size(171, 17);
             this.HTTPSFragmentationCBox.TabIndex = 18;
@@ -420,7 +422,7 @@
             // DontWaitForFirstAckCBox
             // 
             this.DontWaitForFirstAckCBox.AutoSize = true;
-            this.DontWaitForFirstAckCBox.Location = new System.Drawing.Point(6, 281);
+            this.DontWaitForFirstAckCBox.Location = new System.Drawing.Point(6, 304);
             this.DontWaitForFirstAckCBox.Name = "DontWaitForFirstAckCBox";
             this.DontWaitForFirstAckCBox.Size = new System.Drawing.Size(158, 17);
             this.DontWaitForFirstAckCBox.TabIndex = 17;
@@ -430,7 +432,7 @@
             // PHTTPFragmentationCBox
             // 
             this.PHTTPFragmentationCBox.AutoSize = true;
-            this.PHTTPFragmentationCBox.Location = new System.Drawing.Point(6, 183);
+            this.PHTTPFragmentationCBox.Location = new System.Drawing.Point(6, 206);
             this.PHTTPFragmentationCBox.Name = "PHTTPFragmentationCBox";
             this.PHTTPFragmentationCBox.Size = new System.Drawing.Size(213, 17);
             this.PHTTPFragmentationCBox.TabIndex = 16;
@@ -440,7 +442,7 @@
             // HTTPFragmentationCBox
             // 
             this.HTTPFragmentationCBox.AutoSize = true;
-            this.HTTPFragmentationCBox.Location = new System.Drawing.Point(6, 134);
+            this.HTTPFragmentationCBox.Location = new System.Drawing.Point(6, 157);
             this.HTTPFragmentationCBox.Name = "HTTPFragmentationCBox";
             this.HTTPFragmentationCBox.Size = new System.Drawing.Size(161, 17);
             this.HTTPFragmentationCBox.TabIndex = 15;
@@ -450,7 +452,7 @@
             // MixHeaderCBox
             // 
             this.MixHeaderCBox.AutoSize = true;
-            this.MixHeaderCBox.Location = new System.Drawing.Point(6, 88);
+            this.MixHeaderCBox.Location = new System.Drawing.Point(6, 111);
             this.MixHeaderCBox.Name = "MixHeaderCBox";
             this.MixHeaderCBox.Size = new System.Drawing.Size(129, 17);
             this.MixHeaderCBox.TabIndex = 15;
@@ -460,7 +462,7 @@
             // RemoveSpaceBetweenHeaderValueCBox
             // 
             this.RemoveSpaceBetweenHeaderValueCBox.AutoSize = true;
-            this.RemoveSpaceBetweenHeaderValueCBox.Location = new System.Drawing.Point(6, 65);
+            this.RemoveSpaceBetweenHeaderValueCBox.Location = new System.Drawing.Point(6, 88);
             this.RemoveSpaceBetweenHeaderValueCBox.Name = "RemoveSpaceBetweenHeaderValueCBox";
             this.RemoveSpaceBetweenHeaderValueCBox.Size = new System.Drawing.Size(253, 17);
             this.RemoveSpaceBetweenHeaderValueCBox.TabIndex = 14;
@@ -470,7 +472,7 @@
             // ReplaceHostCBox
             // 
             this.ReplaceHostCBox.AutoSize = true;
-            this.ReplaceHostCBox.Location = new System.Drawing.Point(6, 42);
+            this.ReplaceHostCBox.Location = new System.Drawing.Point(6, 65);
             this.ReplaceHostCBox.Name = "ReplaceHostCBox";
             this.ReplaceHostCBox.Size = new System.Drawing.Size(108, 17);
             this.ReplaceHostCBox.TabIndex = 13;
@@ -951,11 +953,21 @@
             this.ServiceStatusInfoLabel.TabIndex = 0;
             this.ServiceStatusInfoLabel.Text = "GoodByeDPI Service:";
             // 
+            // BlockQUICCBox
+            // 
+            this.BlockQUICCBox.AutoSize = true;
+            this.BlockQUICCBox.Location = new System.Drawing.Point(6, 42);
+            this.BlockQUICCBox.Name = "BlockQUICCBox";
+            this.BlockQUICCBox.Size = new System.Drawing.Size(142, 17);
+            this.BlockQUICCBox.TabIndex = 38;
+            this.BlockQUICCBox.Text = "Block QUIC/HTTP3 / -q";
+            this.BlockQUICCBox.UseVisualStyleBackColor = true;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(929, 548);
+            this.ClientSize = new System.Drawing.Size(929, 581);
             this.Controls.Add(this.StatusGBox);
             this.Controls.Add(this.MiscellaneousGBox);
             this.Controls.Add(this.DNSSettingsGBox);
@@ -1073,6 +1085,7 @@
         private System.Windows.Forms.CheckBox KillWinDivertCBox;
         private System.Windows.Forms.Button StopButton;
         private System.Windows.Forms.Button LaunchButton;
+        private System.Windows.Forms.CheckBox BlockQUICCBox;
     }
 }
 
