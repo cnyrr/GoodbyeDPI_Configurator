@@ -65,8 +65,6 @@ namespace GoodbyeDPI_Configurator.Classes
         [JsonIgnore] private int _autoTTLTop = 0;
         [JsonIgnore] private int _autoTTLMax = 0;
 
-
-
         // Public properties.
         [JsonRequired]
         public string Name
@@ -277,8 +275,8 @@ namespace GoodbyeDPI_Configurator.Classes
             }
         }
 
-        // Replace Tuple properties with individual components.
-
+        // Properties with values that are supplied once with the profile.
+        // Note: Using Tuple's broke the program in ways I can't explain.
         public bool HTTPFragmentationEnabled
         {
             get => _httpFragmentationEnabled;
@@ -630,6 +628,9 @@ namespace GoodbyeDPI_Configurator.Classes
             }
         }
 
+        // Properties that can be supplied multiple times.
+        public BindingList<IPID> IPIDList { get; set; } = new BindingList<IPID>();
+
         // PropertyChanged event handler
         public event PropertyChangedEventHandler PropertyChanged;
 
@@ -647,5 +648,11 @@ namespace GoodbyeDPI_Configurator.Classes
         {
             return ProfileConverter.ProfileToArguments(this);
         }
+    }
+
+    public class IPID
+    {
+        public int Value { get; set; }
+        public bool Enabled { get; set; }
     }
 }

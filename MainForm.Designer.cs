@@ -40,6 +40,7 @@
             this.ProfileLoadButton = new System.Windows.Forms.Button();
             this.ProfileListBox = new System.Windows.Forms.ListBox();
             this.SettingsGBox = new System.Windows.Forms.GroupBox();
+            this.BlockQUICCBox = new System.Windows.Forms.CheckBox();
             this.MaxPayloadNBox = new System.Windows.Forms.NumericUpDown();
             this.ExtraTCPPortToFragmentNBox = new System.Windows.Forms.NumericUpDown();
             this.HTTPSFragmentationNBox = new System.Windows.Forms.NumericUpDown();
@@ -85,15 +86,12 @@
             this.IPV4DNSAddressCBox = new System.Windows.Forms.CheckBox();
             this.MiscellaneousGBox = new System.Windows.Forms.GroupBox();
             this.BlacklistAddVBox = new System.Windows.Forms.TextBox();
-            this.ExtraIPIDVBox = new System.Windows.Forms.TextBox();
-            this.ExtraIPIDCBox = new System.Windows.Forms.CheckBox();
             this.EnableBlacklistsCBox = new System.Windows.Forms.CheckBox();
-            this.RemoveIPIDButton = new System.Windows.Forms.Button();
-            this.AddIPIDButton = new System.Windows.Forms.Button();
-            this.ExtraIPIDListBox = new System.Windows.Forms.ListBox();
             this.RemoveBlacklistButton = new System.Windows.Forms.Button();
             this.AddBlacklistButton = new System.Windows.Forms.Button();
             this.BlacklistListBox = new System.Windows.Forms.ListBox();
+            this.RemoveIPIDButton = new System.Windows.Forms.Button();
+            this.AddIPIDButton = new System.Windows.Forms.Button();
             this.StatusGBox = new System.Windows.Forms.GroupBox();
             this.StopButton = new System.Windows.Forms.Button();
             this.LaunchButton = new System.Windows.Forms.Button();
@@ -104,7 +102,9 @@
             this.InstallButton = new System.Windows.Forms.Button();
             this.ServiceStatusLabel = new System.Windows.Forms.Label();
             this.ServiceStatusInfoLabel = new System.Windows.Forms.Label();
-            this.BlockQUICCBox = new System.Windows.Forms.CheckBox();
+            this.ExtraIPIDGBox = new System.Windows.Forms.GroupBox();
+            this.ExtraIPIDVBox = new System.Windows.Forms.NumericUpDown();
+            this.ExtraIPIDCListBox = new System.Windows.Forms.CheckedListBox();
             this.ProfilesGBox.SuspendLayout();
             this.SettingsGBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.MaxPayloadNBox)).BeginInit();
@@ -123,6 +123,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.IPV4DNSPortNBox)).BeginInit();
             this.MiscellaneousGBox.SuspendLayout();
             this.StatusGBox.SuspendLayout();
+            this.ExtraIPIDGBox.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ExtraIPIDVBox)).BeginInit();
             this.SuspendLayout();
             // 
             // ProfilesGBox
@@ -137,7 +139,7 @@
             this.ProfilesGBox.Controls.Add(this.SaveButton);
             this.ProfilesGBox.Controls.Add(this.ProfileLoadButton);
             this.ProfilesGBox.Controls.Add(this.ProfileListBox);
-            this.ProfilesGBox.Location = new System.Drawing.Point(672, 152);
+            this.ProfilesGBox.Location = new System.Drawing.Point(942, 152);
             this.ProfilesGBox.Name = "ProfilesGBox";
             this.ProfilesGBox.Size = new System.Drawing.Size(245, 207);
             this.ProfilesGBox.TabIndex = 13;
@@ -264,10 +266,20 @@
             this.SettingsGBox.Controls.Add(this.BlockPassiveCBox);
             this.SettingsGBox.Location = new System.Drawing.Point(12, 12);
             this.SettingsGBox.Name = "SettingsGBox";
-            this.SettingsGBox.Size = new System.Drawing.Size(350, 557);
+            this.SettingsGBox.Size = new System.Drawing.Size(350, 550);
             this.SettingsGBox.TabIndex = 14;
             this.SettingsGBox.TabStop = false;
             this.SettingsGBox.Text = "Settings";
+            // 
+            // BlockQUICCBox
+            // 
+            this.BlockQUICCBox.AutoSize = true;
+            this.BlockQUICCBox.Location = new System.Drawing.Point(6, 42);
+            this.BlockQUICCBox.Name = "BlockQUICCBox";
+            this.BlockQUICCBox.Size = new System.Drawing.Size(142, 17);
+            this.BlockQUICCBox.TabIndex = 38;
+            this.BlockQUICCBox.Text = "Block QUIC/HTTP3 / -q";
+            this.BlockQUICCBox.UseVisualStyleBackColor = true;
             // 
             // MaxPayloadNBox
             // 
@@ -744,17 +756,12 @@
             // MiscellaneousGBox
             // 
             this.MiscellaneousGBox.Controls.Add(this.BlacklistAddVBox);
-            this.MiscellaneousGBox.Controls.Add(this.ExtraIPIDVBox);
-            this.MiscellaneousGBox.Controls.Add(this.ExtraIPIDCBox);
             this.MiscellaneousGBox.Controls.Add(this.EnableBlacklistsCBox);
-            this.MiscellaneousGBox.Controls.Add(this.RemoveIPIDButton);
-            this.MiscellaneousGBox.Controls.Add(this.AddIPIDButton);
-            this.MiscellaneousGBox.Controls.Add(this.ExtraIPIDListBox);
             this.MiscellaneousGBox.Controls.Add(this.RemoveBlacklistButton);
             this.MiscellaneousGBox.Controls.Add(this.AddBlacklistButton);
             this.MiscellaneousGBox.Controls.Add(this.BlacklistListBox);
             this.MiscellaneousGBox.Enabled = false;
-            this.MiscellaneousGBox.Location = new System.Drawing.Point(672, 365);
+            this.MiscellaneousGBox.Location = new System.Drawing.Point(942, 367);
             this.MiscellaneousGBox.Name = "MiscellaneousGBox";
             this.MiscellaneousGBox.Size = new System.Drawing.Size(245, 179);
             this.MiscellaneousGBox.TabIndex = 17;
@@ -768,23 +775,6 @@
             this.BlacklistAddVBox.Size = new System.Drawing.Size(152, 20);
             this.BlacklistAddVBox.TabIndex = 36;
             // 
-            // ExtraIPIDVBox
-            // 
-            this.ExtraIPIDVBox.Location = new System.Drawing.Point(6, 117);
-            this.ExtraIPIDVBox.Name = "ExtraIPIDVBox";
-            this.ExtraIPIDVBox.Size = new System.Drawing.Size(152, 20);
-            this.ExtraIPIDVBox.TabIndex = 35;
-            // 
-            // ExtraIPIDCBox
-            // 
-            this.ExtraIPIDCBox.AutoSize = true;
-            this.ExtraIPIDCBox.Location = new System.Drawing.Point(6, 99);
-            this.ExtraIPIDCBox.Name = "ExtraIPIDCBox";
-            this.ExtraIPIDCBox.Size = new System.Drawing.Size(99, 17);
-            this.ExtraIPIDCBox.TabIndex = 24;
-            this.ExtraIPIDCBox.Text = "Additional IP ID";
-            this.ExtraIPIDCBox.UseVisualStyleBackColor = true;
-            // 
             // EnableBlacklistsCBox
             // 
             this.EnableBlacklistsCBox.AutoSize = true;
@@ -794,32 +784,6 @@
             this.EnableBlacklistsCBox.TabIndex = 23;
             this.EnableBlacklistsCBox.Text = "Enable Blacklists";
             this.EnableBlacklistsCBox.UseVisualStyleBackColor = true;
-            // 
-            // RemoveIPIDButton
-            // 
-            this.RemoveIPIDButton.Location = new System.Drawing.Point(164, 146);
-            this.RemoveIPIDButton.Name = "RemoveIPIDButton";
-            this.RemoveIPIDButton.Size = new System.Drawing.Size(75, 23);
-            this.RemoveIPIDButton.TabIndex = 22;
-            this.RemoveIPIDButton.Text = "Delete";
-            this.RemoveIPIDButton.UseVisualStyleBackColor = true;
-            // 
-            // AddIPIDButton
-            // 
-            this.AddIPIDButton.Location = new System.Drawing.Point(164, 115);
-            this.AddIPIDButton.Name = "AddIPIDButton";
-            this.AddIPIDButton.Size = new System.Drawing.Size(75, 23);
-            this.AddIPIDButton.TabIndex = 21;
-            this.AddIPIDButton.Text = "Add";
-            this.AddIPIDButton.UseVisualStyleBackColor = true;
-            // 
-            // ExtraIPIDListBox
-            // 
-            this.ExtraIPIDListBox.FormattingEnabled = true;
-            this.ExtraIPIDListBox.Location = new System.Drawing.Point(6, 139);
-            this.ExtraIPIDListBox.Name = "ExtraIPIDListBox";
-            this.ExtraIPIDListBox.Size = new System.Drawing.Size(152, 30);
-            this.ExtraIPIDListBox.TabIndex = 20;
             // 
             // RemoveBlacklistButton
             // 
@@ -847,6 +811,26 @@
             this.BlacklistListBox.Size = new System.Drawing.Size(152, 30);
             this.BlacklistListBox.TabIndex = 15;
             // 
+            // RemoveIPIDButton
+            // 
+            this.RemoveIPIDButton.Location = new System.Drawing.Point(164, 105);
+            this.RemoveIPIDButton.Name = "RemoveIPIDButton";
+            this.RemoveIPIDButton.Size = new System.Drawing.Size(75, 23);
+            this.RemoveIPIDButton.TabIndex = 22;
+            this.RemoveIPIDButton.Text = "Delete";
+            this.RemoveIPIDButton.UseVisualStyleBackColor = true;
+            this.RemoveIPIDButton.Click += new System.EventHandler(this.RemoveIPIDButton_Click);
+            // 
+            // AddIPIDButton
+            // 
+            this.AddIPIDButton.Location = new System.Drawing.Point(164, 45);
+            this.AddIPIDButton.Name = "AddIPIDButton";
+            this.AddIPIDButton.Size = new System.Drawing.Size(75, 23);
+            this.AddIPIDButton.TabIndex = 21;
+            this.AddIPIDButton.Text = "Add";
+            this.AddIPIDButton.UseVisualStyleBackColor = true;
+            this.AddIPIDButton.Click += new System.EventHandler(this.AddIPIDButton_Click);
+            // 
             // StatusGBox
             // 
             this.StatusGBox.Controls.Add(this.StopButton);
@@ -858,7 +842,7 @@
             this.StatusGBox.Controls.Add(this.InstallButton);
             this.StatusGBox.Controls.Add(this.ServiceStatusLabel);
             this.StatusGBox.Controls.Add(this.ServiceStatusInfoLabel);
-            this.StatusGBox.Location = new System.Drawing.Point(672, 12);
+            this.StatusGBox.Location = new System.Drawing.Point(942, 12);
             this.StatusGBox.Name = "StatusGBox";
             this.StatusGBox.Size = new System.Drawing.Size(245, 134);
             this.StatusGBox.TabIndex = 18;
@@ -953,21 +937,45 @@
             this.ServiceStatusInfoLabel.TabIndex = 0;
             this.ServiceStatusInfoLabel.Text = "GoodByeDPI Service:";
             // 
-            // BlockQUICCBox
+            // ExtraIPIDGBox
             // 
-            this.BlockQUICCBox.AutoSize = true;
-            this.BlockQUICCBox.Location = new System.Drawing.Point(6, 42);
-            this.BlockQUICCBox.Name = "BlockQUICCBox";
-            this.BlockQUICCBox.Size = new System.Drawing.Size(142, 17);
-            this.BlockQUICCBox.TabIndex = 38;
-            this.BlockQUICCBox.Text = "Block QUIC/HTTP3 / -q";
-            this.BlockQUICCBox.UseVisualStyleBackColor = true;
+            this.ExtraIPIDGBox.Controls.Add(this.ExtraIPIDVBox);
+            this.ExtraIPIDGBox.Controls.Add(this.ExtraIPIDCListBox);
+            this.ExtraIPIDGBox.Controls.Add(this.AddIPIDButton);
+            this.ExtraIPIDGBox.Controls.Add(this.RemoveIPIDButton);
+            this.ExtraIPIDGBox.Location = new System.Drawing.Point(672, 12);
+            this.ExtraIPIDGBox.Name = "ExtraIPIDGBox";
+            this.ExtraIPIDGBox.Size = new System.Drawing.Size(245, 134);
+            this.ExtraIPIDGBox.TabIndex = 19;
+            this.ExtraIPIDGBox.TabStop = false;
+            this.ExtraIPIDGBox.Text = "Extra IPID\'s";
+            // 
+            // ExtraIPIDVBox
+            // 
+            this.ExtraIPIDVBox.Location = new System.Drawing.Point(164, 19);
+            this.ExtraIPIDVBox.Maximum = new decimal(new int[] {
+            65535,
+            0,
+            0,
+            0});
+            this.ExtraIPIDVBox.Name = "ExtraIPIDVBox";
+            this.ExtraIPIDVBox.Size = new System.Drawing.Size(71, 20);
+            this.ExtraIPIDVBox.TabIndex = 46;
+            // 
+            // ExtraIPIDCListBox
+            // 
+            this.ExtraIPIDCListBox.FormattingEnabled = true;
+            this.ExtraIPIDCListBox.Location = new System.Drawing.Point(6, 19);
+            this.ExtraIPIDCListBox.Name = "ExtraIPIDCListBox";
+            this.ExtraIPIDCListBox.Size = new System.Drawing.Size(152, 109);
+            this.ExtraIPIDCListBox.TabIndex = 36;
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(929, 581);
+            this.ClientSize = new System.Drawing.Size(1199, 662);
+            this.Controls.Add(this.ExtraIPIDGBox);
             this.Controls.Add(this.StatusGBox);
             this.Controls.Add(this.MiscellaneousGBox);
             this.Controls.Add(this.DNSSettingsGBox);
@@ -1004,6 +1012,8 @@
             this.MiscellaneousGBox.PerformLayout();
             this.StatusGBox.ResumeLayout(false);
             this.StatusGBox.PerformLayout();
+            this.ExtraIPIDGBox.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.ExtraIPIDVBox)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1047,17 +1057,14 @@
         private System.Windows.Forms.GroupBox StatusGBox;
         private System.Windows.Forms.Label ServiceStatusInfoLabel;
         private System.Windows.Forms.Label ServiceStatusLabel;
-        private System.Windows.Forms.CheckBox ExtraIPIDCBox;
         private System.Windows.Forms.CheckBox EnableBlacklistsCBox;
         private System.Windows.Forms.Button RemoveIPIDButton;
         private System.Windows.Forms.Button AddIPIDButton;
-        private System.Windows.Forms.ListBox ExtraIPIDListBox;
         private System.Windows.Forms.Button RemoveBlacklistButton;
         private System.Windows.Forms.Button AddBlacklistButton;
         private System.Windows.Forms.ListBox BlacklistListBox;
         private System.Windows.Forms.Button RemoveButton;
         private System.Windows.Forms.Button InstallButton;
-        private System.Windows.Forms.TextBox ExtraIPIDVBox;
         private System.Windows.Forms.TextBox BlacklistAddVBox;
         private System.Windows.Forms.Button ProfilePasteButton;
         private System.Windows.Forms.Button ProfileCopyButton;
@@ -1086,6 +1093,9 @@
         private System.Windows.Forms.Button StopButton;
         private System.Windows.Forms.Button LaunchButton;
         private System.Windows.Forms.CheckBox BlockQUICCBox;
+        private System.Windows.Forms.GroupBox ExtraIPIDGBox;
+        private System.Windows.Forms.CheckedListBox ExtraIPIDCListBox;
+        private System.Windows.Forms.NumericUpDown ExtraIPIDVBox;
     }
 }
 
