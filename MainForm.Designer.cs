@@ -40,6 +40,7 @@
             this.ProfileLoadButton = new System.Windows.Forms.Button();
             this.ProfileListBox = new System.Windows.Forms.ListBox();
             this.SettingsGBox = new System.Windows.Forms.GroupBox();
+            this.BlockQUICCBox = new System.Windows.Forms.CheckBox();
             this.MaxPayloadNBox = new System.Windows.Forms.NumericUpDown();
             this.ExtraTCPPortToFragmentNBox = new System.Windows.Forms.NumericUpDown();
             this.HTTPSFragmentationNBox = new System.Windows.Forms.NumericUpDown();
@@ -85,15 +86,12 @@
             this.IPV4DNSAddressCBox = new System.Windows.Forms.CheckBox();
             this.MiscellaneousGBox = new System.Windows.Forms.GroupBox();
             this.BlacklistAddVBox = new System.Windows.Forms.TextBox();
-            this.ExtraIPIDVBox = new System.Windows.Forms.TextBox();
-            this.ExtraIPIDCBox = new System.Windows.Forms.CheckBox();
             this.EnableBlacklistsCBox = new System.Windows.Forms.CheckBox();
-            this.RemoveIPIDButton = new System.Windows.Forms.Button();
-            this.AddIPIDButton = new System.Windows.Forms.Button();
-            this.ExtraIPIDListBox = new System.Windows.Forms.ListBox();
             this.RemoveBlacklistButton = new System.Windows.Forms.Button();
             this.AddBlacklistButton = new System.Windows.Forms.Button();
             this.BlacklistListBox = new System.Windows.Forms.ListBox();
+            this.RemoveIPIDButton = new System.Windows.Forms.Button();
+            this.AddIPIDButton = new System.Windows.Forms.Button();
             this.StatusGBox = new System.Windows.Forms.GroupBox();
             this.StopButton = new System.Windows.Forms.Button();
             this.LaunchButton = new System.Windows.Forms.Button();
@@ -104,6 +102,9 @@
             this.InstallButton = new System.Windows.Forms.Button();
             this.ServiceStatusLabel = new System.Windows.Forms.Label();
             this.ServiceStatusInfoLabel = new System.Windows.Forms.Label();
+            this.ExtraIPIDGBox = new System.Windows.Forms.GroupBox();
+            this.ExtraIPIDVBox = new System.Windows.Forms.NumericUpDown();
+            this.ExtraIPIDCListBox = new System.Windows.Forms.CheckedListBox();
             this.ProfilesGBox.SuspendLayout();
             this.SettingsGBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.MaxPayloadNBox)).BeginInit();
@@ -122,6 +123,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.IPV4DNSPortNBox)).BeginInit();
             this.MiscellaneousGBox.SuspendLayout();
             this.StatusGBox.SuspendLayout();
+            this.ExtraIPIDGBox.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ExtraIPIDVBox)).BeginInit();
             this.SuspendLayout();
             // 
             // ProfilesGBox
@@ -136,7 +139,7 @@
             this.ProfilesGBox.Controls.Add(this.SaveButton);
             this.ProfilesGBox.Controls.Add(this.ProfileLoadButton);
             this.ProfilesGBox.Controls.Add(this.ProfileListBox);
-            this.ProfilesGBox.Location = new System.Drawing.Point(672, 152);
+            this.ProfilesGBox.Location = new System.Drawing.Point(942, 152);
             this.ProfilesGBox.Name = "ProfilesGBox";
             this.ProfilesGBox.Size = new System.Drawing.Size(245, 207);
             this.ProfilesGBox.TabIndex = 13;
@@ -239,6 +242,7 @@
             // 
             // SettingsGBox
             // 
+            this.SettingsGBox.Controls.Add(this.BlockQUICCBox);
             this.SettingsGBox.Controls.Add(this.MaxPayloadNBox);
             this.SettingsGBox.Controls.Add(this.ExtraTCPPortToFragmentNBox);
             this.SettingsGBox.Controls.Add(this.HTTPSFragmentationNBox);
@@ -262,14 +266,24 @@
             this.SettingsGBox.Controls.Add(this.BlockPassiveCBox);
             this.SettingsGBox.Location = new System.Drawing.Point(12, 12);
             this.SettingsGBox.Name = "SettingsGBox";
-            this.SettingsGBox.Size = new System.Drawing.Size(350, 532);
+            this.SettingsGBox.Size = new System.Drawing.Size(350, 550);
             this.SettingsGBox.TabIndex = 14;
             this.SettingsGBox.TabStop = false;
             this.SettingsGBox.Text = "Settings";
             // 
+            // BlockQUICCBox
+            // 
+            this.BlockQUICCBox.AutoSize = true;
+            this.BlockQUICCBox.Location = new System.Drawing.Point(6, 42);
+            this.BlockQUICCBox.Name = "BlockQUICCBox";
+            this.BlockQUICCBox.Size = new System.Drawing.Size(142, 17);
+            this.BlockQUICCBox.TabIndex = 38;
+            this.BlockQUICCBox.Text = "Block QUIC/HTTP3 / -q";
+            this.BlockQUICCBox.UseVisualStyleBackColor = true;
+            // 
             // MaxPayloadNBox
             // 
-            this.MaxPayloadNBox.Location = new System.Drawing.Point(6, 491);
+            this.MaxPayloadNBox.Location = new System.Drawing.Point(6, 514);
             this.MaxPayloadNBox.Maximum = new decimal(new int[] {
             65535,
             0,
@@ -281,7 +295,7 @@
             // 
             // ExtraTCPPortToFragmentNBox
             // 
-            this.ExtraTCPPortToFragmentNBox.Location = new System.Drawing.Point(6, 327);
+            this.ExtraTCPPortToFragmentNBox.Location = new System.Drawing.Point(6, 350);
             this.ExtraTCPPortToFragmentNBox.Maximum = new decimal(new int[] {
             65535,
             0,
@@ -293,7 +307,7 @@
             // 
             // HTTPSFragmentationNBox
             // 
-            this.HTTPSFragmentationNBox.Location = new System.Drawing.Point(6, 255);
+            this.HTTPSFragmentationNBox.Location = new System.Drawing.Point(6, 278);
             this.HTTPSFragmentationNBox.Maximum = new decimal(new int[] {
             65535,
             0,
@@ -305,7 +319,7 @@
             // 
             // PHTTPFragmentationNBox
             // 
-            this.PHTTPFragmentationNBox.Location = new System.Drawing.Point(6, 206);
+            this.PHTTPFragmentationNBox.Location = new System.Drawing.Point(6, 229);
             this.PHTTPFragmentationNBox.Maximum = new decimal(new int[] {
             65535,
             0,
@@ -317,7 +331,7 @@
             // 
             // HTTPFragmentationNBox
             // 
-            this.HTTPFragmentationNBox.Location = new System.Drawing.Point(6, 157);
+            this.HTTPFragmentationNBox.Location = new System.Drawing.Point(6, 180);
             this.HTTPFragmentationNBox.Maximum = new decimal(new int[] {
             65535,
             0,
@@ -330,7 +344,7 @@
             // MaxPayloadCBox
             // 
             this.MaxPayloadCBox.AutoSize = true;
-            this.MaxPayloadCBox.Location = new System.Drawing.Point(7, 468);
+            this.MaxPayloadCBox.Location = new System.Drawing.Point(7, 491);
             this.MaxPayloadCBox.Name = "MaxPayloadCBox";
             this.MaxPayloadCBox.Size = new System.Drawing.Size(187, 17);
             this.MaxPayloadCBox.TabIndex = 31;
@@ -340,7 +354,7 @@
             // ReverseFragmentationCBox
             // 
             this.ReverseFragmentationCBox.AutoSize = true;
-            this.ReverseFragmentationCBox.Location = new System.Drawing.Point(6, 445);
+            this.ReverseFragmentationCBox.Location = new System.Drawing.Point(6, 468);
             this.ReverseFragmentationCBox.Name = "ReverseFragmentationCBox";
             this.ReverseFragmentationCBox.Size = new System.Drawing.Size(209, 17);
             this.ReverseFragmentationCBox.TabIndex = 30;
@@ -350,7 +364,7 @@
             // NativeFragmentationCBox
             // 
             this.NativeFragmentationCBox.AutoSize = true;
-            this.NativeFragmentationCBox.Location = new System.Drawing.Point(6, 422);
+            this.NativeFragmentationCBox.Location = new System.Drawing.Point(6, 445);
             this.NativeFragmentationCBox.Name = "NativeFragmentationCBox";
             this.NativeFragmentationCBox.Size = new System.Drawing.Size(194, 17);
             this.NativeFragmentationCBox.TabIndex = 29;
@@ -360,7 +374,7 @@
             // FragmentSNICBox
             // 
             this.FragmentSNICBox.AutoSize = true;
-            this.FragmentSNICBox.Location = new System.Drawing.Point(6, 399);
+            this.FragmentSNICBox.Location = new System.Drawing.Point(6, 422);
             this.FragmentSNICBox.Name = "FragmentSNICBox";
             this.FragmentSNICBox.Size = new System.Drawing.Size(178, 17);
             this.FragmentSNICBox.TabIndex = 28;
@@ -370,7 +384,7 @@
             // CircumventWhenNoSNICBox
             // 
             this.CircumventWhenNoSNICBox.AutoSize = true;
-            this.CircumventWhenNoSNICBox.Location = new System.Drawing.Point(6, 376);
+            this.CircumventWhenNoSNICBox.Location = new System.Drawing.Point(6, 399);
             this.CircumventWhenNoSNICBox.Name = "CircumventWhenNoSNICBox";
             this.CircumventWhenNoSNICBox.Size = new System.Drawing.Size(338, 17);
             this.CircumventWhenNoSNICBox.TabIndex = 27;
@@ -380,7 +394,7 @@
             // ExtraTCPPortToFragmentCBox
             // 
             this.ExtraTCPPortToFragmentCBox.AutoSize = true;
-            this.ExtraTCPPortToFragmentCBox.Location = new System.Drawing.Point(6, 304);
+            this.ExtraTCPPortToFragmentCBox.Location = new System.Drawing.Point(6, 327);
             this.ExtraTCPPortToFragmentCBox.Name = "ExtraTCPPortToFragmentCBox";
             this.ExtraTCPPortToFragmentCBox.Size = new System.Drawing.Size(274, 17);
             this.ExtraTCPPortToFragmentCBox.TabIndex = 21;
@@ -390,7 +404,7 @@
             // ParseHTTPAllPortsCBox
             // 
             this.ParseHTTPAllPortsCBox.AutoSize = true;
-            this.ParseHTTPAllPortsCBox.Location = new System.Drawing.Point(6, 353);
+            this.ParseHTTPAllPortsCBox.Location = new System.Drawing.Point(6, 376);
             this.ParseHTTPAllPortsCBox.Name = "ParseHTTPAllPortsCBox";
             this.ParseHTTPAllPortsCBox.Size = new System.Drawing.Size(236, 17);
             this.ParseHTTPAllPortsCBox.TabIndex = 20;
@@ -400,7 +414,7 @@
             // ExtraSpaceBetweenMethodURICBox
             // 
             this.ExtraSpaceBetweenMethodURICBox.AutoSize = true;
-            this.ExtraSpaceBetweenMethodURICBox.Location = new System.Drawing.Point(6, 111);
+            this.ExtraSpaceBetweenMethodURICBox.Location = new System.Drawing.Point(6, 134);
             this.ExtraSpaceBetweenMethodURICBox.Name = "ExtraSpaceBetweenMethodURICBox";
             this.ExtraSpaceBetweenMethodURICBox.Size = new System.Drawing.Size(264, 17);
             this.ExtraSpaceBetweenMethodURICBox.TabIndex = 19;
@@ -410,7 +424,7 @@
             // HTTPSFragmentationCBox
             // 
             this.HTTPSFragmentationCBox.AutoSize = true;
-            this.HTTPSFragmentationCBox.Location = new System.Drawing.Point(6, 232);
+            this.HTTPSFragmentationCBox.Location = new System.Drawing.Point(6, 255);
             this.HTTPSFragmentationCBox.Name = "HTTPSFragmentationCBox";
             this.HTTPSFragmentationCBox.Size = new System.Drawing.Size(171, 17);
             this.HTTPSFragmentationCBox.TabIndex = 18;
@@ -420,7 +434,7 @@
             // DontWaitForFirstAckCBox
             // 
             this.DontWaitForFirstAckCBox.AutoSize = true;
-            this.DontWaitForFirstAckCBox.Location = new System.Drawing.Point(6, 281);
+            this.DontWaitForFirstAckCBox.Location = new System.Drawing.Point(6, 304);
             this.DontWaitForFirstAckCBox.Name = "DontWaitForFirstAckCBox";
             this.DontWaitForFirstAckCBox.Size = new System.Drawing.Size(158, 17);
             this.DontWaitForFirstAckCBox.TabIndex = 17;
@@ -430,7 +444,7 @@
             // PHTTPFragmentationCBox
             // 
             this.PHTTPFragmentationCBox.AutoSize = true;
-            this.PHTTPFragmentationCBox.Location = new System.Drawing.Point(6, 183);
+            this.PHTTPFragmentationCBox.Location = new System.Drawing.Point(6, 206);
             this.PHTTPFragmentationCBox.Name = "PHTTPFragmentationCBox";
             this.PHTTPFragmentationCBox.Size = new System.Drawing.Size(213, 17);
             this.PHTTPFragmentationCBox.TabIndex = 16;
@@ -440,7 +454,7 @@
             // HTTPFragmentationCBox
             // 
             this.HTTPFragmentationCBox.AutoSize = true;
-            this.HTTPFragmentationCBox.Location = new System.Drawing.Point(6, 134);
+            this.HTTPFragmentationCBox.Location = new System.Drawing.Point(6, 157);
             this.HTTPFragmentationCBox.Name = "HTTPFragmentationCBox";
             this.HTTPFragmentationCBox.Size = new System.Drawing.Size(161, 17);
             this.HTTPFragmentationCBox.TabIndex = 15;
@@ -450,7 +464,7 @@
             // MixHeaderCBox
             // 
             this.MixHeaderCBox.AutoSize = true;
-            this.MixHeaderCBox.Location = new System.Drawing.Point(6, 88);
+            this.MixHeaderCBox.Location = new System.Drawing.Point(6, 111);
             this.MixHeaderCBox.Name = "MixHeaderCBox";
             this.MixHeaderCBox.Size = new System.Drawing.Size(129, 17);
             this.MixHeaderCBox.TabIndex = 15;
@@ -460,7 +474,7 @@
             // RemoveSpaceBetweenHeaderValueCBox
             // 
             this.RemoveSpaceBetweenHeaderValueCBox.AutoSize = true;
-            this.RemoveSpaceBetweenHeaderValueCBox.Location = new System.Drawing.Point(6, 65);
+            this.RemoveSpaceBetweenHeaderValueCBox.Location = new System.Drawing.Point(6, 88);
             this.RemoveSpaceBetweenHeaderValueCBox.Name = "RemoveSpaceBetweenHeaderValueCBox";
             this.RemoveSpaceBetweenHeaderValueCBox.Size = new System.Drawing.Size(253, 17);
             this.RemoveSpaceBetweenHeaderValueCBox.TabIndex = 14;
@@ -470,7 +484,7 @@
             // ReplaceHostCBox
             // 
             this.ReplaceHostCBox.AutoSize = true;
-            this.ReplaceHostCBox.Location = new System.Drawing.Point(6, 42);
+            this.ReplaceHostCBox.Location = new System.Drawing.Point(6, 65);
             this.ReplaceHostCBox.Name = "ReplaceHostCBox";
             this.ReplaceHostCBox.Size = new System.Drawing.Size(108, 17);
             this.ReplaceHostCBox.TabIndex = 13;
@@ -742,17 +756,12 @@
             // MiscellaneousGBox
             // 
             this.MiscellaneousGBox.Controls.Add(this.BlacklistAddVBox);
-            this.MiscellaneousGBox.Controls.Add(this.ExtraIPIDVBox);
-            this.MiscellaneousGBox.Controls.Add(this.ExtraIPIDCBox);
             this.MiscellaneousGBox.Controls.Add(this.EnableBlacklistsCBox);
-            this.MiscellaneousGBox.Controls.Add(this.RemoveIPIDButton);
-            this.MiscellaneousGBox.Controls.Add(this.AddIPIDButton);
-            this.MiscellaneousGBox.Controls.Add(this.ExtraIPIDListBox);
             this.MiscellaneousGBox.Controls.Add(this.RemoveBlacklistButton);
             this.MiscellaneousGBox.Controls.Add(this.AddBlacklistButton);
             this.MiscellaneousGBox.Controls.Add(this.BlacklistListBox);
             this.MiscellaneousGBox.Enabled = false;
-            this.MiscellaneousGBox.Location = new System.Drawing.Point(672, 365);
+            this.MiscellaneousGBox.Location = new System.Drawing.Point(942, 367);
             this.MiscellaneousGBox.Name = "MiscellaneousGBox";
             this.MiscellaneousGBox.Size = new System.Drawing.Size(245, 179);
             this.MiscellaneousGBox.TabIndex = 17;
@@ -766,23 +775,6 @@
             this.BlacklistAddVBox.Size = new System.Drawing.Size(152, 20);
             this.BlacklistAddVBox.TabIndex = 36;
             // 
-            // ExtraIPIDVBox
-            // 
-            this.ExtraIPIDVBox.Location = new System.Drawing.Point(6, 117);
-            this.ExtraIPIDVBox.Name = "ExtraIPIDVBox";
-            this.ExtraIPIDVBox.Size = new System.Drawing.Size(152, 20);
-            this.ExtraIPIDVBox.TabIndex = 35;
-            // 
-            // ExtraIPIDCBox
-            // 
-            this.ExtraIPIDCBox.AutoSize = true;
-            this.ExtraIPIDCBox.Location = new System.Drawing.Point(6, 99);
-            this.ExtraIPIDCBox.Name = "ExtraIPIDCBox";
-            this.ExtraIPIDCBox.Size = new System.Drawing.Size(99, 17);
-            this.ExtraIPIDCBox.TabIndex = 24;
-            this.ExtraIPIDCBox.Text = "Additional IP ID";
-            this.ExtraIPIDCBox.UseVisualStyleBackColor = true;
-            // 
             // EnableBlacklistsCBox
             // 
             this.EnableBlacklistsCBox.AutoSize = true;
@@ -792,32 +784,6 @@
             this.EnableBlacklistsCBox.TabIndex = 23;
             this.EnableBlacklistsCBox.Text = "Enable Blacklists";
             this.EnableBlacklistsCBox.UseVisualStyleBackColor = true;
-            // 
-            // RemoveIPIDButton
-            // 
-            this.RemoveIPIDButton.Location = new System.Drawing.Point(164, 146);
-            this.RemoveIPIDButton.Name = "RemoveIPIDButton";
-            this.RemoveIPIDButton.Size = new System.Drawing.Size(75, 23);
-            this.RemoveIPIDButton.TabIndex = 22;
-            this.RemoveIPIDButton.Text = "Delete";
-            this.RemoveIPIDButton.UseVisualStyleBackColor = true;
-            // 
-            // AddIPIDButton
-            // 
-            this.AddIPIDButton.Location = new System.Drawing.Point(164, 115);
-            this.AddIPIDButton.Name = "AddIPIDButton";
-            this.AddIPIDButton.Size = new System.Drawing.Size(75, 23);
-            this.AddIPIDButton.TabIndex = 21;
-            this.AddIPIDButton.Text = "Add";
-            this.AddIPIDButton.UseVisualStyleBackColor = true;
-            // 
-            // ExtraIPIDListBox
-            // 
-            this.ExtraIPIDListBox.FormattingEnabled = true;
-            this.ExtraIPIDListBox.Location = new System.Drawing.Point(6, 139);
-            this.ExtraIPIDListBox.Name = "ExtraIPIDListBox";
-            this.ExtraIPIDListBox.Size = new System.Drawing.Size(152, 30);
-            this.ExtraIPIDListBox.TabIndex = 20;
             // 
             // RemoveBlacklistButton
             // 
@@ -845,6 +811,26 @@
             this.BlacklistListBox.Size = new System.Drawing.Size(152, 30);
             this.BlacklistListBox.TabIndex = 15;
             // 
+            // RemoveIPIDButton
+            // 
+            this.RemoveIPIDButton.Location = new System.Drawing.Point(164, 105);
+            this.RemoveIPIDButton.Name = "RemoveIPIDButton";
+            this.RemoveIPIDButton.Size = new System.Drawing.Size(75, 23);
+            this.RemoveIPIDButton.TabIndex = 22;
+            this.RemoveIPIDButton.Text = "Delete";
+            this.RemoveIPIDButton.UseVisualStyleBackColor = true;
+            this.RemoveIPIDButton.Click += new System.EventHandler(this.RemoveIPIDButton_Click);
+            // 
+            // AddIPIDButton
+            // 
+            this.AddIPIDButton.Location = new System.Drawing.Point(164, 45);
+            this.AddIPIDButton.Name = "AddIPIDButton";
+            this.AddIPIDButton.Size = new System.Drawing.Size(75, 23);
+            this.AddIPIDButton.TabIndex = 21;
+            this.AddIPIDButton.Text = "Add";
+            this.AddIPIDButton.UseVisualStyleBackColor = true;
+            this.AddIPIDButton.Click += new System.EventHandler(this.AddIPIDButton_Click);
+            // 
             // StatusGBox
             // 
             this.StatusGBox.Controls.Add(this.StopButton);
@@ -856,7 +842,7 @@
             this.StatusGBox.Controls.Add(this.InstallButton);
             this.StatusGBox.Controls.Add(this.ServiceStatusLabel);
             this.StatusGBox.Controls.Add(this.ServiceStatusInfoLabel);
-            this.StatusGBox.Location = new System.Drawing.Point(672, 12);
+            this.StatusGBox.Location = new System.Drawing.Point(942, 12);
             this.StatusGBox.Name = "StatusGBox";
             this.StatusGBox.Size = new System.Drawing.Size(245, 134);
             this.StatusGBox.TabIndex = 18;
@@ -951,11 +937,45 @@
             this.ServiceStatusInfoLabel.TabIndex = 0;
             this.ServiceStatusInfoLabel.Text = "GoodByeDPI Service:";
             // 
+            // ExtraIPIDGBox
+            // 
+            this.ExtraIPIDGBox.Controls.Add(this.ExtraIPIDVBox);
+            this.ExtraIPIDGBox.Controls.Add(this.ExtraIPIDCListBox);
+            this.ExtraIPIDGBox.Controls.Add(this.AddIPIDButton);
+            this.ExtraIPIDGBox.Controls.Add(this.RemoveIPIDButton);
+            this.ExtraIPIDGBox.Location = new System.Drawing.Point(672, 12);
+            this.ExtraIPIDGBox.Name = "ExtraIPIDGBox";
+            this.ExtraIPIDGBox.Size = new System.Drawing.Size(245, 134);
+            this.ExtraIPIDGBox.TabIndex = 19;
+            this.ExtraIPIDGBox.TabStop = false;
+            this.ExtraIPIDGBox.Text = "Extra IPID\'s";
+            // 
+            // ExtraIPIDVBox
+            // 
+            this.ExtraIPIDVBox.Location = new System.Drawing.Point(164, 19);
+            this.ExtraIPIDVBox.Maximum = new decimal(new int[] {
+            65535,
+            0,
+            0,
+            0});
+            this.ExtraIPIDVBox.Name = "ExtraIPIDVBox";
+            this.ExtraIPIDVBox.Size = new System.Drawing.Size(71, 20);
+            this.ExtraIPIDVBox.TabIndex = 46;
+            // 
+            // ExtraIPIDCListBox
+            // 
+            this.ExtraIPIDCListBox.FormattingEnabled = true;
+            this.ExtraIPIDCListBox.Location = new System.Drawing.Point(6, 19);
+            this.ExtraIPIDCListBox.Name = "ExtraIPIDCListBox";
+            this.ExtraIPIDCListBox.Size = new System.Drawing.Size(152, 109);
+            this.ExtraIPIDCListBox.TabIndex = 36;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(929, 548);
+            this.ClientSize = new System.Drawing.Size(1199, 662);
+            this.Controls.Add(this.ExtraIPIDGBox);
             this.Controls.Add(this.StatusGBox);
             this.Controls.Add(this.MiscellaneousGBox);
             this.Controls.Add(this.DNSSettingsGBox);
@@ -992,6 +1012,8 @@
             this.MiscellaneousGBox.PerformLayout();
             this.StatusGBox.ResumeLayout(false);
             this.StatusGBox.PerformLayout();
+            this.ExtraIPIDGBox.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.ExtraIPIDVBox)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1035,17 +1057,14 @@
         private System.Windows.Forms.GroupBox StatusGBox;
         private System.Windows.Forms.Label ServiceStatusInfoLabel;
         private System.Windows.Forms.Label ServiceStatusLabel;
-        private System.Windows.Forms.CheckBox ExtraIPIDCBox;
         private System.Windows.Forms.CheckBox EnableBlacklistsCBox;
         private System.Windows.Forms.Button RemoveIPIDButton;
         private System.Windows.Forms.Button AddIPIDButton;
-        private System.Windows.Forms.ListBox ExtraIPIDListBox;
         private System.Windows.Forms.Button RemoveBlacklistButton;
         private System.Windows.Forms.Button AddBlacklistButton;
         private System.Windows.Forms.ListBox BlacklistListBox;
         private System.Windows.Forms.Button RemoveButton;
         private System.Windows.Forms.Button InstallButton;
-        private System.Windows.Forms.TextBox ExtraIPIDVBox;
         private System.Windows.Forms.TextBox BlacklistAddVBox;
         private System.Windows.Forms.Button ProfilePasteButton;
         private System.Windows.Forms.Button ProfileCopyButton;
@@ -1073,6 +1092,10 @@
         private System.Windows.Forms.CheckBox KillWinDivertCBox;
         private System.Windows.Forms.Button StopButton;
         private System.Windows.Forms.Button LaunchButton;
+        private System.Windows.Forms.CheckBox BlockQUICCBox;
+        private System.Windows.Forms.GroupBox ExtraIPIDGBox;
+        private System.Windows.Forms.CheckedListBox ExtraIPIDCListBox;
+        private System.Windows.Forms.NumericUpDown ExtraIPIDVBox;
     }
 }
 

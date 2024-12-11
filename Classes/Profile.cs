@@ -12,6 +12,7 @@ namespace GoodbyeDPI_Configurator.Classes
         // Private fields.
         [JsonIgnore] private string _name;
         [JsonIgnore] private bool _blockPassiveDPI = false;
+        [JsonIgnore] private bool _blockQUICHTTP3 = false;
         [JsonIgnore] private bool _replaceHost = false;
         [JsonIgnore] private bool _removeSpaceBetweenHeaderValue = false;
         [JsonIgnore] private bool _mixHeaderCase = false;
@@ -64,8 +65,6 @@ namespace GoodbyeDPI_Configurator.Classes
         [JsonIgnore] private int _autoTTLTop = 0;
         [JsonIgnore] private int _autoTTLMax = 0;
 
-
-
         // Public properties.
         [JsonRequired]
         public string Name
@@ -90,6 +89,19 @@ namespace GoodbyeDPI_Configurator.Classes
                 {
                     _blockPassiveDPI = value;
                     OnPropertyChanged(nameof(BlockPassiveDPI));
+                }
+            }
+        }
+
+        public bool BlockQUICHTTP3
+        {
+            get => _blockQUICHTTP3;
+            set
+            {
+                if (_blockQUICHTTP3 != value)
+                {
+                    _blockQUICHTTP3 = value;
+                    OnPropertyChanged(nameof(BlockQUICHTTP3));
                 }
             }
         }
@@ -263,8 +275,8 @@ namespace GoodbyeDPI_Configurator.Classes
             }
         }
 
-        // Replace Tuple properties with individual components.
-
+        // Properties with values that are supplied once with the profile.
+        // Note: Using Tuple's broke the program in ways I can't explain.
         public bool HTTPFragmentationEnabled
         {
             get => _httpFragmentationEnabled;
@@ -616,6 +628,9 @@ namespace GoodbyeDPI_Configurator.Classes
             }
         }
 
+        // Properties that can be supplied multiple times.
+        public BindingList<IPID> IPIDList { get; set; } = new BindingList<IPID>();
+
         // PropertyChanged event handler
         public event PropertyChangedEventHandler PropertyChanged;
 
@@ -633,5 +648,11 @@ namespace GoodbyeDPI_Configurator.Classes
         {
             return ProfileConverter.ProfileToArguments(this);
         }
+    }
+
+    public class IPID
+    {
+        public int Value { get; set; }
+        public bool Enabled { get; set; }
     }
 }

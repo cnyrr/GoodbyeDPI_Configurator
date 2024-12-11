@@ -239,6 +239,7 @@ namespace GoodByeDPI_Configurator
         private void ClearControlBindsToProfile()
         {
             BlockPassiveCBox.DataBindings.Clear();
+            BlockQUICCBox.DataBindings.Clear();
             ReplaceHostCBox.DataBindings.Clear();
             RemoveSpaceBetweenHeaderValueCBox.DataBindings.Clear();
             MixHeaderCBox.DataBindings.Clear();
@@ -279,6 +280,8 @@ namespace GoodByeDPI_Configurator
             AutoTTLMaxNBox.DataBindings.Clear();
             MinimumTTLCBox.DataBindings.Clear();
             MinimumTTLNBox.DataBindings.Clear();
+            ExtraIPIDCListBox.DataBindings.Clear();
+            ExtraIPIDCListBox.ItemCheck -= ExtraIPIDCListBox_ItemCheck;
         }
 
         /// <summary>
@@ -288,68 +291,119 @@ namespace GoodByeDPI_Configurator
         {
             // Block Passive -p
             BlockPassiveCBox.DataBindings.Add("Checked", ProfileManager.CurrentProfile, "BlockPassiveDPI", false, DataSourceUpdateMode.OnPropertyChanged);
+            
+            // Block QUIC/HTTP3 -q
+            BlockQUICCBox.DataBindings.Add("Checked", ProfileManager.CurrentProfile, "BlockQUICHTTP3", false, DataSourceUpdateMode.OnPropertyChanged);
+            
             // Replace Host -r
             ReplaceHostCBox.DataBindings.Add("Checked", ProfileManager.CurrentProfile, "ReplaceHost", false, DataSourceUpdateMode.OnPropertyChanged);
+            
             // Remove Space Between Header Value -s
             RemoveSpaceBetweenHeaderValueCBox.DataBindings.Add("Checked", ProfileManager.CurrentProfile, "RemoveSpaceBetweenHeaderValue", false, DataSourceUpdateMode.OnPropertyChanged);
+            
             // Mix Header -m
             MixHeaderCBox.DataBindings.Add("Checked", ProfileManager.CurrentProfile, "MixHeaderCase", false, DataSourceUpdateMode.OnPropertyChanged);
+            
             // Extra Space Between Method and URI -a
             ExtraSpaceBetweenMethodURICBox.DataBindings.Add("Checked", ProfileManager.CurrentProfile, "ExtraSpaceBetweenMethodURI", false, DataSourceUpdateMode.OnPropertyChanged);
+            
             // Don't Wait for First ACK -n
             DontWaitForFirstAckCBox.DataBindings.Add("Checked", ProfileManager.CurrentProfile, "DontWaitForFirstAck", false, DataSourceUpdateMode.OnPropertyChanged);
+            
             // Parse HTTP on All Ports -w
             ParseHTTPAllPortsCBox.DataBindings.Add("Checked", ProfileManager.CurrentProfile, "ParseHTTPAllPorts", false, DataSourceUpdateMode.OnPropertyChanged);
+            
             // Circumvent When No SNI --allow-no-sni
             CircumventWhenNoSNICBox.DataBindings.Add("Checked", ProfileManager.CurrentProfile, "CircumventWhenNoSNI", false, DataSourceUpdateMode.OnPropertyChanged);
+            
             // Fragment SNI --frag-by-sni
             FragmentSNICBox.DataBindings.Add("Checked", ProfileManager.CurrentProfile, "FragmentSNI", false, DataSourceUpdateMode.OnPropertyChanged);
+            
             // Native Fragmentation --native-frag
             NativeFragmentationCBox.DataBindings.Add("Checked", ProfileManager.CurrentProfile, "NativeFragmentation", false, DataSourceUpdateMode.OnPropertyChanged);
+            
             // Reverse Fragmentation --reverse-frag
             ReverseFragmentationCBox.DataBindings.Add("Checked", ProfileManager.CurrentProfile, "ReverseFragmentation", false, DataSourceUpdateMode.OnPropertyChanged);
+            
             // Verbose DNS Redirect Messages --dns-verb
             VerboseDNSRedirectMessagesCBox.DataBindings.Add("Checked", ProfileManager.CurrentProfile, "VerboseDNSRedirectMessages", false, DataSourceUpdateMode.OnPropertyChanged);
+            
             // Wrong Checksum --wrong-chksum
             WrongChecksumCBox.DataBindings.Add("Checked", ProfileManager.CurrentProfile, "WrongChecksum", false, DataSourceUpdateMode.OnPropertyChanged);
+            
             // Wrong Sequence --wrong-seq
             WrongSequenceCBox.DataBindings.Add("Checked", ProfileManager.CurrentProfile, "WrongSequence", false, DataSourceUpdateMode.OnPropertyChanged);
+            
             // HTTP Fragmentation -f <value>
             HTTPFragmentationCBox.DataBindings.Add("Checked", ProfileManager.CurrentProfile, "HTTPFragmentationEnabled", false, DataSourceUpdateMode.OnPropertyChanged);
             HTTPFragmentationNBox.DataBindings.Add("Value", ProfileManager.CurrentProfile, "HTTPFragmentationValue", false, DataSourceUpdateMode.OnPropertyChanged);
+            
             // HTTP Persistent Fragmentation -k <value>
             PHTTPFragmentationCBox.DataBindings.Add("Checked", ProfileManager.CurrentProfile, "PHTTPFragmentationEnabled", false, DataSourceUpdateMode.OnPropertyChanged);
             PHTTPFragmentationNBox.DataBindings.Add("Value", ProfileManager.CurrentProfile, "PHTTPFragmentationValue", false, DataSourceUpdateMode.OnPropertyChanged);
+            
             // HTTPS Fragmentation -e <value>
             HTTPSFragmentationCBox.DataBindings.Add("Checked", ProfileManager.CurrentProfile, "HTTPSFragmentationEnabled", false, DataSourceUpdateMode.OnPropertyChanged);
             HTTPSFragmentationNBox.DataBindings.Add("Value", ProfileManager.CurrentProfile, "HTTPSFragmentationValue", false, DataSourceUpdateMode.OnPropertyChanged);
+            
             // Extra TCP Port to Fragment --port <value>
             ExtraTCPPortToFragmentCBox.DataBindings.Add("Checked", ProfileManager.CurrentProfile, "ExtraTCPPortToFragmentEnabled", false, DataSourceUpdateMode.OnPropertyChanged);
             ExtraTCPPortToFragmentNBox.DataBindings.Add("Value", ProfileManager.CurrentProfile, "ExtraTCPPortToFragmentValue", false, DataSourceUpdateMode.OnPropertyChanged);
+            
             // Max Payload --max-payload <value>
             MaxPayloadCBox.DataBindings.Add("Checked", ProfileManager.CurrentProfile, "MaxPayloadEnabled", false, DataSourceUpdateMode.OnPropertyChanged);
             MaxPayloadNBox.DataBindings.Add("Value", ProfileManager.CurrentProfile, "MaxPayloadValue", false, DataSourceUpdateMode.OnPropertyChanged);
+            
             // IPv4 DNS Address --dns-addr <value> --dns-port <value>
             IPV4DNSAddressCBox.DataBindings.Add("Checked", ProfileManager.CurrentProfile, "IPV4DNSEnabled", false, DataSourceUpdateMode.OnPropertyChanged);
             IPV4DNSAddressVBox.DataBindings.Add("Text", ProfileManager.CurrentProfile, "IPV4DNSHost", false, DataSourceUpdateMode.OnPropertyChanged);
             IPV4DNSPortCBox.DataBindings.Add("Checked", ProfileManager.CurrentProfile, "IPV4DNSPortEnabled", false, DataSourceUpdateMode.OnPropertyChanged);
             IPV4DNSPortNBox.DataBindings.Add("Value", ProfileManager.CurrentProfile, "IPV4DNSPortValue", false, DataSourceUpdateMode.OnPropertyChanged);
+            
             // IPv6 DNS Address --dnsv6-addr <value> --dnsv6-port <value>
             IPV6DNSAddressCBox.DataBindings.Add("Checked", ProfileManager.CurrentProfile, "IPV6DNSEnabled", false, DataSourceUpdateMode.OnPropertyChanged);
             IPV6DNSAddressVBox.DataBindings.Add("Text", ProfileManager.CurrentProfile, "IPV6DNSHost", false, DataSourceUpdateMode.OnPropertyChanged);
             IPV6DNSPortCBox.DataBindings.Add("Checked", ProfileManager.CurrentProfile, "IPV6DNSPortEnabled", false, DataSourceUpdateMode.OnPropertyChanged);
             IPV6DNSPortNBox.DataBindings.Add("Value", ProfileManager.CurrentProfile, "IPV6DNSPortValue", false, DataSourceUpdateMode.OnPropertyChanged);
+            
             // Custom TTL --set-ttl <value>
             CustomTTLRButton.DataBindings.Add("Checked", ProfileManager.CurrentProfile, "CustomTTLEnabled", false, DataSourceUpdateMode.OnPropertyChanged);
             CustomTTLNBox.DataBindings.Add("Value", ProfileManager.CurrentProfile, "CustomTTLValue", false, DataSourceUpdateMode.OnPropertyChanged);
+            
             // Auto TTL --auto-ttl [a1-a2-m]
             AutoTTLRButton.DataBindings.Add("Checked", ProfileManager.CurrentProfile, "AutoTTLBaseTopMaxEnabled", false, DataSourceUpdateMode.OnPropertyChanged);
             AutoTTLScalerBaseNBox.DataBindings.Add("Value", ProfileManager.CurrentProfile, "AutoTTLBase", false, DataSourceUpdateMode.OnPropertyChanged);
             AutoTTLScalerTopNBox.DataBindings.Add("Value", ProfileManager.CurrentProfile, "AutoTTLTop", false, DataSourceUpdateMode.OnPropertyChanged);
             AutoTTLMaxNBox.DataBindings.Add("Value", ProfileManager.CurrentProfile, "AutoTTLMax", false, DataSourceUpdateMode.OnPropertyChanged);
+
             // Minimum TTL --min-ttl <value>
             MinimumTTLCBox.DataBindings.Add("Checked", ProfileManager.CurrentProfile, "MinimumTTLEnabled", false, DataSourceUpdateMode.OnPropertyChanged);
             MinimumTTLNBox.DataBindings.Add("Value", ProfileManager.CurrentProfile, "MinimumTTLValue", false, DataSourceUpdateMode.OnPropertyChanged);
+
+            // Extra IPID --extra-ipid <value>
+            // Can be supplied multiple times.
+            ExtraIPIDCListBox.DataSource = ProfileManager.CurrentProfile.IPIDList;
+            ExtraIPIDCListBox.DisplayMember = "Value";
+
+            ExtraIPIDCListBox_RestoreCheckedStatus();
+
+            ExtraIPIDCListBox.ItemCheck += ExtraIPIDCListBox_ItemCheck;
+        }
+
+        private void ExtraIPIDCListBox_RestoreCheckedStatus()
+        {
+            for (int i = 0; i < ProfileManager.CurrentProfile.IPIDList.Count; i++)
+            {
+                ExtraIPIDCListBox.SetItemChecked(i, ProfileManager.CurrentProfile.IPIDList[i].Enabled);
+            }
+        }
+
+        /// <summary>
+        /// Binds the check status to the Current Profile's IPID.
+        /// </summary>
+        private void ExtraIPIDCListBox_ItemCheck(object sender, ItemCheckEventArgs e)
+        {
+            ProfileManager.CurrentProfile.IPIDList[e.Index].Enabled = e.NewValue == CheckState.Checked;
         }
 
         /*
@@ -469,12 +523,37 @@ namespace GoodByeDPI_Configurator
             }
         }
 
-        private void Check16BitValue(object sender, EventArgs e)
+        /// <summary>
+        /// Since I couldn't find a way to bind the checked status of the IPID list, we do it manually.
+        /// </summary>
+        private void AddIPIDButton_Click(object sender, EventArgs e)
         {
-            if ((sender as NumericUpDown).Value > 65535)
+            // Check if value already exists.
+            foreach (var item in ProfileManager.CurrentProfile.IPIDList)
             {
-                (sender as NumericUpDown).Value = 65535;
+                if (item.Value == (int)ExtraIPIDVBox.Value) { return; }
             }
+
+            // Add the new IPID to profile.
+            ProfileManager.CurrentProfile.IPIDList.Add(new IPID() { Enabled = true, Value = (int)ExtraIPIDVBox.Value });
+
+            // Update the checked status of the list.
+            ExtraIPIDCListBox_RestoreCheckedStatus();
+        }
+        
+        /// <summary>
+        /// Remove the selected IPID.
+        /// </summary>
+        private void RemoveIPIDButton_Click(object sender, EventArgs e)
+        {
+            // Return if nothing is selected.
+            if (ExtraIPIDCListBox.SelectedIndex == -1) { return; }
+
+            // Remove the selected IPID from profile.
+            ProfileManager.CurrentProfile.IPIDList.RemoveAt(ExtraIPIDCListBox.SelectedIndex);
+
+            // Update the checked status of the list.
+            ExtraIPIDCListBox_RestoreCheckedStatus();
         }
 
         /// <summary>
@@ -485,6 +564,7 @@ namespace GoodByeDPI_Configurator
             // Save the profiles.
             ProfileManager.SaveProfiles();
         }
+
     }
 }
 
