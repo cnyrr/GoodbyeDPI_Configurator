@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing;
 using System.Security.Cryptography;
+using System.ServiceProcess.Design;
 using System.Text.Json;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
@@ -385,9 +386,18 @@ namespace GoodByeDPI_Configurator
             ExtraIPIDCListBox.DataSource = ProfileManager.CurrentProfile.IPIDList;
             ExtraIPIDCListBox.DisplayMember = "Value";
 
+            // Blacklist --blacklist <txtfile>
+            // Can be supplied multiple times.
+            BlacklistCListBox.DataSource = ProfileManager.CurrentProfile.BlacklistList;
+            BlacklistCListBox.DisplayMember = "Name";
+
+            // Update checked status of CheckedListBox's.
             ExtraIPIDCListBox_RestoreCheckedStatus();
+            BlacklistCListBox_RestoreCheckedStatus();
+
 
             ExtraIPIDCListBox.ItemCheck += ExtraIPIDCListBox_ItemCheck;
+            BlacklistCListBox.ItemCheck += BlacklistCListBox_ItemCheck;
         }
 
         private void ExtraIPIDCListBox_RestoreCheckedStatus()
@@ -398,12 +408,28 @@ namespace GoodByeDPI_Configurator
             }
         }
 
+        private void BlacklistCListBox_RestoreCheckedStatus()
+        {
+            for (int i = 0; i < ProfileManager.CurrentProfile.BlacklistList.Count; i++)
+            {
+                BlacklistCListBox.SetItemChecked(i, ProfileManager.CurrentProfile.BlacklistList[i].Enabled);
+            }
+        }
+
         /// <summary>
-        /// Binds the check status to the Current Profile's IPID.
+        /// Binds the check status to the Current Profile's IPIDs.
         /// </summary>
         private void ExtraIPIDCListBox_ItemCheck(object sender, ItemCheckEventArgs e)
         {
             ProfileManager.CurrentProfile.IPIDList[e.Index].Enabled = e.NewValue == CheckState.Checked;
+        }
+
+        /// <summary>
+        /// Binds the check status to the Current Profile's Blacklists.
+        /// </summary>
+        private void BlacklistCListBox_ItemCheck(object sender, ItemCheckEventArgs e)
+        {
+            ProfileManager.CurrentProfile.BlacklistList[e.Index].Enabled = e.NewValue == CheckState.Checked;
         }
 
         /*
@@ -524,7 +550,7 @@ namespace GoodByeDPI_Configurator
         }
 
         /// <summary>
-        /// Since I couldn't find a way to bind the checked status of the IPID list, we do it manually.
+        /// Adds the new IPID to the profile.
         /// </summary>
         private void AddIPIDButton_Click(object sender, EventArgs e)
         {
@@ -557,6 +583,59 @@ namespace GoodByeDPI_Configurator
         }
 
         /// <summary>
+        /// Add the new blacklist to the profile.
+        /// </summary>
+        private void AddBlacklistButton_Click(object sender, EventArgs e)
+        {
+            // Check for duplicate names.
+            foreach (var blacklist in ProfileManager.CurrentProfile.BlacklistList)
+            {
+                if (blacklist.Name == BlacklistVBox.Text) { return; }
+            }
+
+            // Let user pick a file.
+            OpenFileDialog dialog = new OpenFileDialog
+            {
+                Filter = "Text Files(*.txt) | *.txt"
+            };
+
+            // Add it to the blacklist list.
+            if (dialog.ShowDialog() == DialogResult.OK)
+            {
+                ProfileManager.CurrentProfile.BlacklistList.Add(
+                    new Blacklist()
+                    { 
+                        Name = BlacklistVBox.Text,
+                        Path = dialog.FileName,
+                        Enabled = true
+                    }
+                );
+
+                // Restore the checked status.
+                BlacklistCListBox_RestoreCheckedStatus();
+            }
+
+            // Dispose OpenFileDialog.
+            dialog.Dispose();
+        }
+
+        /// <summary>
+        /// Remove the selected blacklist.
+        /// </summary>
+        private void RemoveBlacklistButton_Click(object sender, EventArgs e)
+        {
+            // Return if nothing is selected.
+            if (BlacklistCListBox.SelectedIndex == -1) { return; }
+
+            // Remove the selected IPID from profile.
+            ProfileManager.CurrentProfile.BlacklistList.RemoveAt(BlacklistCListBox.SelectedIndex);
+
+            // Update the checked status of the list.
+            ExtraIPIDCListBox_RestoreCheckedStatus();
+        }
+
+
+        /// <summary>
         /// Save the profiles on application exit.
         /// </summary>
         private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
@@ -564,7 +643,6 @@ namespace GoodByeDPI_Configurator
             // Save the profiles.
             ProfileManager.SaveProfiles();
         }
-
     }
 }
 
