@@ -631,6 +631,8 @@ namespace GoodbyeDPI_Configurator.Classes
         // Properties that can be supplied multiple times.
         public BindingList<IPID> IPIDList { get; set; } = new BindingList<IPID>();
 
+        public BindingList<Blacklist> BlacklistList { get; set; } = new BindingList<Blacklist>();
+
         // PropertyChanged event handler
         public event PropertyChangedEventHandler PropertyChanged;
 
@@ -653,6 +655,13 @@ namespace GoodbyeDPI_Configurator.Classes
     public class IPID
     {
         public int Value { get; set; }
+        public bool Enabled { get; set; }
+    }
+
+    public class Blacklist
+    {
+        public string Name { get; set; }
+        public string Path { get; set; }
         public bool Enabled { get; set; }
     }
 }

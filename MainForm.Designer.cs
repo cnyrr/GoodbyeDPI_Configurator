@@ -84,12 +84,6 @@
             this.IPV4DNSPortCBox = new System.Windows.Forms.CheckBox();
             this.IPV4DNSAddressVBox = new System.Windows.Forms.TextBox();
             this.IPV4DNSAddressCBox = new System.Windows.Forms.CheckBox();
-            this.MiscellaneousGBox = new System.Windows.Forms.GroupBox();
-            this.BlacklistAddVBox = new System.Windows.Forms.TextBox();
-            this.EnableBlacklistsCBox = new System.Windows.Forms.CheckBox();
-            this.RemoveBlacklistButton = new System.Windows.Forms.Button();
-            this.AddBlacklistButton = new System.Windows.Forms.Button();
-            this.BlacklistListBox = new System.Windows.Forms.ListBox();
             this.RemoveIPIDButton = new System.Windows.Forms.Button();
             this.AddIPIDButton = new System.Windows.Forms.Button();
             this.StatusGBox = new System.Windows.Forms.GroupBox();
@@ -105,6 +99,11 @@
             this.ExtraIPIDGBox = new System.Windows.Forms.GroupBox();
             this.ExtraIPIDVBox = new System.Windows.Forms.NumericUpDown();
             this.ExtraIPIDCListBox = new System.Windows.Forms.CheckedListBox();
+            this.BlacklistGBox = new System.Windows.Forms.GroupBox();
+            this.BlacklistCListBox = new System.Windows.Forms.CheckedListBox();
+            this.AddBlacklistButton = new System.Windows.Forms.Button();
+            this.RemoveBlacklistButton = new System.Windows.Forms.Button();
+            this.BlacklistVBox = new System.Windows.Forms.TextBox();
             this.ProfilesGBox.SuspendLayout();
             this.SettingsGBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.MaxPayloadNBox)).BeginInit();
@@ -121,10 +120,10 @@
             this.DNSSettingsGBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.IPV6DNSPortNBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.IPV4DNSPortNBox)).BeginInit();
-            this.MiscellaneousGBox.SuspendLayout();
             this.StatusGBox.SuspendLayout();
             this.ExtraIPIDGBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ExtraIPIDVBox)).BeginInit();
+            this.BlacklistGBox.SuspendLayout();
             this.SuspendLayout();
             // 
             // ProfilesGBox
@@ -753,64 +752,6 @@
             this.IPV4DNSAddressCBox.Text = "IPV4 DNS Address / --dns-addr";
             this.IPV4DNSAddressCBox.UseVisualStyleBackColor = true;
             // 
-            // MiscellaneousGBox
-            // 
-            this.MiscellaneousGBox.Controls.Add(this.BlacklistAddVBox);
-            this.MiscellaneousGBox.Controls.Add(this.EnableBlacklistsCBox);
-            this.MiscellaneousGBox.Controls.Add(this.RemoveBlacklistButton);
-            this.MiscellaneousGBox.Controls.Add(this.AddBlacklistButton);
-            this.MiscellaneousGBox.Controls.Add(this.BlacklistListBox);
-            this.MiscellaneousGBox.Enabled = false;
-            this.MiscellaneousGBox.Location = new System.Drawing.Point(942, 367);
-            this.MiscellaneousGBox.Name = "MiscellaneousGBox";
-            this.MiscellaneousGBox.Size = new System.Drawing.Size(245, 179);
-            this.MiscellaneousGBox.TabIndex = 17;
-            this.MiscellaneousGBox.TabStop = false;
-            this.MiscellaneousGBox.Text = "Miscallaneous";
-            // 
-            // BlacklistAddVBox
-            // 
-            this.BlacklistAddVBox.Location = new System.Drawing.Point(6, 37);
-            this.BlacklistAddVBox.Name = "BlacklistAddVBox";
-            this.BlacklistAddVBox.Size = new System.Drawing.Size(152, 20);
-            this.BlacklistAddVBox.TabIndex = 36;
-            // 
-            // EnableBlacklistsCBox
-            // 
-            this.EnableBlacklistsCBox.AutoSize = true;
-            this.EnableBlacklistsCBox.Location = new System.Drawing.Point(6, 19);
-            this.EnableBlacklistsCBox.Name = "EnableBlacklistsCBox";
-            this.EnableBlacklistsCBox.Size = new System.Drawing.Size(106, 17);
-            this.EnableBlacklistsCBox.TabIndex = 23;
-            this.EnableBlacklistsCBox.Text = "Enable Blacklists";
-            this.EnableBlacklistsCBox.UseVisualStyleBackColor = true;
-            // 
-            // RemoveBlacklistButton
-            // 
-            this.RemoveBlacklistButton.Location = new System.Drawing.Point(164, 67);
-            this.RemoveBlacklistButton.Name = "RemoveBlacklistButton";
-            this.RemoveBlacklistButton.Size = new System.Drawing.Size(75, 23);
-            this.RemoveBlacklistButton.TabIndex = 19;
-            this.RemoveBlacklistButton.Text = "Remove";
-            this.RemoveBlacklistButton.UseVisualStyleBackColor = true;
-            // 
-            // AddBlacklistButton
-            // 
-            this.AddBlacklistButton.Location = new System.Drawing.Point(164, 35);
-            this.AddBlacklistButton.Name = "AddBlacklistButton";
-            this.AddBlacklistButton.Size = new System.Drawing.Size(75, 23);
-            this.AddBlacklistButton.TabIndex = 18;
-            this.AddBlacklistButton.Text = "Add";
-            this.AddBlacklistButton.UseVisualStyleBackColor = true;
-            // 
-            // BlacklistListBox
-            // 
-            this.BlacklistListBox.FormattingEnabled = true;
-            this.BlacklistListBox.Location = new System.Drawing.Point(6, 60);
-            this.BlacklistListBox.Name = "BlacklistListBox";
-            this.BlacklistListBox.Size = new System.Drawing.Size(152, 30);
-            this.BlacklistListBox.TabIndex = 15;
-            // 
             // RemoveIPIDButton
             // 
             this.RemoveIPIDButton.Location = new System.Drawing.Point(164, 105);
@@ -970,14 +911,62 @@
             this.ExtraIPIDCListBox.Size = new System.Drawing.Size(152, 109);
             this.ExtraIPIDCListBox.TabIndex = 36;
             // 
+            // BlacklistGBox
+            // 
+            this.BlacklistGBox.Controls.Add(this.BlacklistVBox);
+            this.BlacklistGBox.Controls.Add(this.BlacklistCListBox);
+            this.BlacklistGBox.Controls.Add(this.AddBlacklistButton);
+            this.BlacklistGBox.Controls.Add(this.RemoveBlacklistButton);
+            this.BlacklistGBox.Location = new System.Drawing.Point(672, 150);
+            this.BlacklistGBox.Name = "BlacklistGBox";
+            this.BlacklistGBox.Size = new System.Drawing.Size(245, 134);
+            this.BlacklistGBox.TabIndex = 47;
+            this.BlacklistGBox.TabStop = false;
+            this.BlacklistGBox.Text = "Blacklists";
+            // 
+            // BlacklistCListBox
+            // 
+            this.BlacklistCListBox.FormattingEnabled = true;
+            this.BlacklistCListBox.Location = new System.Drawing.Point(6, 19);
+            this.BlacklistCListBox.Name = "BlacklistCListBox";
+            this.BlacklistCListBox.Size = new System.Drawing.Size(152, 109);
+            this.BlacklistCListBox.TabIndex = 36;
+            // 
+            // AddBlacklistButton
+            // 
+            this.AddBlacklistButton.Location = new System.Drawing.Point(164, 45);
+            this.AddBlacklistButton.Name = "AddBlacklistButton";
+            this.AddBlacklistButton.Size = new System.Drawing.Size(75, 23);
+            this.AddBlacklistButton.TabIndex = 21;
+            this.AddBlacklistButton.Text = "Add";
+            this.AddBlacklistButton.UseVisualStyleBackColor = true;
+            this.AddBlacklistButton.Click += new System.EventHandler(this.AddBlacklistButton_Click);
+            // 
+            // RemoveBlacklistButton
+            // 
+            this.RemoveBlacklistButton.Location = new System.Drawing.Point(164, 105);
+            this.RemoveBlacklistButton.Name = "RemoveBlacklistButton";
+            this.RemoveBlacklistButton.Size = new System.Drawing.Size(75, 23);
+            this.RemoveBlacklistButton.TabIndex = 22;
+            this.RemoveBlacklistButton.Text = "Delete";
+            this.RemoveBlacklistButton.UseVisualStyleBackColor = true;
+            this.RemoveBlacklistButton.Click += new System.EventHandler(this.RemoveBlacklistButton_Click);
+            // 
+            // BlacklistVBox
+            // 
+            this.BlacklistVBox.Location = new System.Drawing.Point(164, 19);
+            this.BlacklistVBox.Name = "BlacklistVBox";
+            this.BlacklistVBox.Size = new System.Drawing.Size(75, 20);
+            this.BlacklistVBox.TabIndex = 44;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1199, 662);
+            this.Controls.Add(this.BlacklistGBox);
             this.Controls.Add(this.ExtraIPIDGBox);
             this.Controls.Add(this.StatusGBox);
-            this.Controls.Add(this.MiscellaneousGBox);
             this.Controls.Add(this.DNSSettingsGBox);
             this.Controls.Add(this.FakePacketSettingsGBox);
             this.Controls.Add(this.SettingsGBox);
@@ -1008,12 +997,12 @@
             this.DNSSettingsGBox.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.IPV6DNSPortNBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.IPV4DNSPortNBox)).EndInit();
-            this.MiscellaneousGBox.ResumeLayout(false);
-            this.MiscellaneousGBox.PerformLayout();
             this.StatusGBox.ResumeLayout(false);
             this.StatusGBox.PerformLayout();
             this.ExtraIPIDGBox.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.ExtraIPIDVBox)).EndInit();
+            this.BlacklistGBox.ResumeLayout(false);
+            this.BlacklistGBox.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -1053,19 +1042,13 @@
         private System.Windows.Forms.TextBox NewProfileNameVBox;
         private System.Windows.Forms.Button ProfileDeleteButton;
         private System.Windows.Forms.Button SaveButton;
-        private System.Windows.Forms.GroupBox MiscellaneousGBox;
         private System.Windows.Forms.GroupBox StatusGBox;
         private System.Windows.Forms.Label ServiceStatusInfoLabel;
         private System.Windows.Forms.Label ServiceStatusLabel;
-        private System.Windows.Forms.CheckBox EnableBlacklistsCBox;
         private System.Windows.Forms.Button RemoveIPIDButton;
         private System.Windows.Forms.Button AddIPIDButton;
-        private System.Windows.Forms.Button RemoveBlacklistButton;
-        private System.Windows.Forms.Button AddBlacklistButton;
-        private System.Windows.Forms.ListBox BlacklistListBox;
         private System.Windows.Forms.Button RemoveButton;
         private System.Windows.Forms.Button InstallButton;
-        private System.Windows.Forms.TextBox BlacklistAddVBox;
         private System.Windows.Forms.Button ProfilePasteButton;
         private System.Windows.Forms.Button ProfileCopyButton;
         private System.Windows.Forms.Label InternetAccessLabel;
@@ -1096,6 +1079,11 @@
         private System.Windows.Forms.GroupBox ExtraIPIDGBox;
         private System.Windows.Forms.CheckedListBox ExtraIPIDCListBox;
         private System.Windows.Forms.NumericUpDown ExtraIPIDVBox;
+        private System.Windows.Forms.GroupBox BlacklistGBox;
+        private System.Windows.Forms.CheckedListBox BlacklistCListBox;
+        private System.Windows.Forms.Button RemoveBlacklistButton;
+        private System.Windows.Forms.TextBox BlacklistVBox;
+        private System.Windows.Forms.Button AddBlacklistButton;
     }
 }
 
