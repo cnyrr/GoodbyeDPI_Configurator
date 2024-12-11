@@ -48,6 +48,7 @@ namespace GoodByeDPI_Configurator
         {
             ToolTip toolTip = new ToolTip();
             toolTip.SetToolTip(BlockPassiveCBox, "Block passive DPI.");
+            toolTip.SetToolTip(BlockQUICCBox, "Block QUIC/HTTP3.");
             toolTip.SetToolTip(ReplaceHostCBox, "Replace Host with hoSt.");
             toolTip.SetToolTip(RemoveSpaceBetweenHeaderValueCBox, "Remove space between host header and its value.");
             toolTip.SetToolTip(MixHeaderCBox, "Mix Host header case. (test.com -> tEsT.cOm)");
@@ -60,6 +61,7 @@ namespace GoodByeDPI_Configurator
             toolTip.SetToolTip(HTTPSFragmentationNBox, "HTTPS fragmentation value.");
             toolTip.SetToolTip(DontWaitForFirstAckCBox, "Do not wait for first segment ACK when -k is enabled");
             toolTip.SetToolTip(ExtraTCPPortToFragmentCBox, "Additional TCP port to perform fragmentation on. (and HTTP tricks with -w)");
+            toolTip.SetToolTip(ExtraTCPPortToFragmentNBox, "Additional port number.");
             toolTip.SetToolTip(ParseHTTPAllPortsCBox, "Try to find and parse HTTP traffic on all processed ports. (not only on port 80)");
             toolTip.SetToolTip(CircumventWhenNoSNICBox, "Perform circumvention if TLS SNI can't be detected with --blacklist enabled.");
             toolTip.SetToolTip(FragmentSNICBox, "If SNI is detected in TLS packet, fragment the packet right before SNI value.");
@@ -87,6 +89,22 @@ namespace GoodByeDPI_Configurator
             toolTip.SetToolTip(MinimumTTLNBox, "Minimum TTL value.");
             toolTip.SetToolTip(WrongChecksumCBox, "Activate Fake Request Mode and send it with incorrect TCP checksum.\r\nMay not work in a VM or with some routers, but is safer than set-ttl.\r\nNote: Combination of --wrong-seq and --wrong-chksum generates two different fake packets.");
             toolTip.SetToolTip(WrongSequenceCBox, "Activate Fake Request Mode and send it with TCP SEQ/ACK in the past.\r\nNote: Combination of --wrong-seq and --wrong-chksum generates two different fake packets.");
+
+            // tooltip for ExtraIPIDCBoxList
+            // tooltip for its NBox
+            // tooltip for its add button
+            // tooltip for its delete button
+
+            // tooltip for BlacklistCBoxList
+            // tooltip for its VBox
+            // tooltip for its add button
+            // tooltip for its delete button
+
+            
+            // tooltip for stop
+            // tooltip for launch
+
+
             toolTip.SetToolTip(RemoveButton, "Removes the service and installed files.");
             toolTip.SetToolTip(InstallButton, "Installs the service.");
 
@@ -99,6 +117,8 @@ namespace GoodByeDPI_Configurator
 
             toolTip.SetToolTip(ProfileCopyButton, "Copy the current profile as arguments to the clipboard.\nSHIFT: Copy current profile in JSON format.\nCTRL: Copy all profiles in JSON format.");
             toolTip.SetToolTip(ProfilePasteButton, "Add profile(s) from the clipboard.");
+
+
 
             // TODO: Add more tooltips.
 

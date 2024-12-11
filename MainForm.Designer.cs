@@ -157,7 +157,7 @@
             // 
             // ProfileAddButton
             // 
-            this.ProfileAddButton.Location = new System.Drawing.Point(164, 175);
+            this.ProfileAddButton.Location = new System.Drawing.Point(164, 243);
             this.ProfileAddButton.Name = "ProfileAddButton";
             this.ProfileAddButton.Size = new System.Drawing.Size(75, 23);
             this.ProfileAddButton.TabIndex = 38;
@@ -167,7 +167,7 @@
             // 
             // ProfileAddVBox
             // 
-            this.ProfileAddVBox.Location = new System.Drawing.Point(6, 177);
+            this.ProfileAddVBox.Location = new System.Drawing.Point(6, 246);
             this.ProfileAddVBox.Name = "ProfileAddVBox";
             this.ProfileAddVBox.Size = new System.Drawing.Size(152, 20);
             this.ProfileAddVBox.TabIndex = 37;
@@ -176,7 +176,7 @@
             // 
             // ProfilePasteButton
             // 
-            this.ProfilePasteButton.Location = new System.Drawing.Point(164, 134);
+            this.ProfilePasteButton.Location = new System.Drawing.Point(164, 194);
             this.ProfilePasteButton.Name = "ProfilePasteButton";
             this.ProfilePasteButton.Size = new System.Drawing.Size(75, 23);
             this.ProfilePasteButton.TabIndex = 20;
@@ -186,7 +186,7 @@
             // 
             // ProfileCopyButton
             // 
-            this.ProfileCopyButton.Location = new System.Drawing.Point(164, 105);
+            this.ProfileCopyButton.Location = new System.Drawing.Point(164, 167);
             this.ProfileCopyButton.Name = "ProfileCopyButton";
             this.ProfileCopyButton.Size = new System.Drawing.Size(75, 23);
             this.ProfileCopyButton.TabIndex = 19;
@@ -235,7 +235,7 @@
             this.ProfileListBox.FormattingEnabled = true;
             this.ProfileListBox.Location = new System.Drawing.Point(6, 18);
             this.ProfileListBox.Name = "ProfileListBox";
-            this.ProfileListBox.Size = new System.Drawing.Size(152, 147);
+            this.ProfileListBox.Size = new System.Drawing.Size(152, 199);
             this.ProfileListBox.TabIndex = 14;
             this.ProfileListBox.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.ProfileListBox_MouseDoubleClick);
             // 
