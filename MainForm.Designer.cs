@@ -100,10 +100,10 @@
             this.ExtraIPIDVBox = new System.Windows.Forms.NumericUpDown();
             this.ExtraIPIDCListBox = new System.Windows.Forms.CheckedListBox();
             this.BlacklistGBox = new System.Windows.Forms.GroupBox();
+            this.BlacklistVBox = new System.Windows.Forms.TextBox();
             this.BlacklistCListBox = new System.Windows.Forms.CheckedListBox();
             this.AddBlacklistButton = new System.Windows.Forms.Button();
             this.RemoveBlacklistButton = new System.Windows.Forms.Button();
-            this.BlacklistVBox = new System.Windows.Forms.TextBox();
             this.ProfilesGBox.SuspendLayout();
             this.SettingsGBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.MaxPayloadNBox)).BeginInit();
@@ -138,9 +138,9 @@
             this.ProfilesGBox.Controls.Add(this.SaveButton);
             this.ProfilesGBox.Controls.Add(this.ProfileLoadButton);
             this.ProfilesGBox.Controls.Add(this.ProfileListBox);
-            this.ProfilesGBox.Location = new System.Drawing.Point(942, 152);
+            this.ProfilesGBox.Location = new System.Drawing.Point(672, 290);
             this.ProfilesGBox.Name = "ProfilesGBox";
-            this.ProfilesGBox.Size = new System.Drawing.Size(245, 207);
+            this.ProfilesGBox.Size = new System.Drawing.Size(245, 272);
             this.ProfilesGBox.TabIndex = 13;
             this.ProfilesGBox.TabStop = false;
             this.ProfilesGBox.Text = "Default Profiles";
@@ -525,7 +525,7 @@
             this.FakePacketSettingsGBox.Controls.Add(this.AutoTTLScalerBaseNBox);
             this.FakePacketSettingsGBox.Location = new System.Drawing.Point(368, 267);
             this.FakePacketSettingsGBox.Name = "FakePacketSettingsGBox";
-            this.FakePacketSettingsGBox.Size = new System.Drawing.Size(298, 277);
+            this.FakePacketSettingsGBox.Size = new System.Drawing.Size(298, 295);
             this.FakePacketSettingsGBox.TabIndex = 15;
             this.FakePacketSettingsGBox.TabStop = false;
             this.FakePacketSettingsGBox.Text = "Fake Packet Settings";
@@ -783,16 +783,16 @@
             this.StatusGBox.Controls.Add(this.InstallButton);
             this.StatusGBox.Controls.Add(this.ServiceStatusLabel);
             this.StatusGBox.Controls.Add(this.ServiceStatusInfoLabel);
-            this.StatusGBox.Location = new System.Drawing.Point(942, 12);
+            this.StatusGBox.Location = new System.Drawing.Point(12, 568);
             this.StatusGBox.Name = "StatusGBox";
-            this.StatusGBox.Size = new System.Drawing.Size(245, 134);
+            this.StatusGBox.Size = new System.Drawing.Size(905, 74);
             this.StatusGBox.TabIndex = 18;
             this.StatusGBox.TabStop = false;
             this.StatusGBox.Text = "Status";
             // 
             // StopButton
             // 
-            this.StopButton.Location = new System.Drawing.Point(6, 76);
+            this.StopButton.Location = new System.Drawing.Point(666, 14);
             this.StopButton.Name = "StopButton";
             this.StopButton.Size = new System.Drawing.Size(95, 23);
             this.StopButton.TabIndex = 18;
@@ -802,7 +802,7 @@
             // 
             // LaunchButton
             // 
-            this.LaunchButton.Location = new System.Drawing.Point(144, 76);
+            this.LaunchButton.Location = new System.Drawing.Point(804, 14);
             this.LaunchButton.Name = "LaunchButton";
             this.LaunchButton.Size = new System.Drawing.Size(95, 23);
             this.LaunchButton.TabIndex = 17;
@@ -842,7 +842,7 @@
             // 
             // RemoveButton
             // 
-            this.RemoveButton.Location = new System.Drawing.Point(6, 105);
+            this.RemoveButton.Location = new System.Drawing.Point(666, 43);
             this.RemoveButton.Name = "RemoveButton";
             this.RemoveButton.Size = new System.Drawing.Size(95, 23);
             this.RemoveButton.TabIndex = 3;
@@ -852,7 +852,7 @@
             // 
             // InstallButton
             // 
-            this.InstallButton.Location = new System.Drawing.Point(144, 105);
+            this.InstallButton.Location = new System.Drawing.Point(804, 43);
             this.InstallButton.Name = "InstallButton";
             this.InstallButton.Size = new System.Drawing.Size(95, 23);
             this.InstallButton.TabIndex = 2;
@@ -924,6 +924,13 @@
             this.BlacklistGBox.TabStop = false;
             this.BlacklistGBox.Text = "Blacklists";
             // 
+            // BlacklistVBox
+            // 
+            this.BlacklistVBox.Location = new System.Drawing.Point(164, 19);
+            this.BlacklistVBox.Name = "BlacklistVBox";
+            this.BlacklistVBox.Size = new System.Drawing.Size(75, 20);
+            this.BlacklistVBox.TabIndex = 44;
+            // 
             // BlacklistCListBox
             // 
             this.BlacklistCListBox.FormattingEnabled = true;
@@ -952,18 +959,11 @@
             this.RemoveBlacklistButton.UseVisualStyleBackColor = true;
             this.RemoveBlacklistButton.Click += new System.EventHandler(this.RemoveBlacklistButton_Click);
             // 
-            // BlacklistVBox
-            // 
-            this.BlacklistVBox.Location = new System.Drawing.Point(164, 19);
-            this.BlacklistVBox.Name = "BlacklistVBox";
-            this.BlacklistVBox.Size = new System.Drawing.Size(75, 20);
-            this.BlacklistVBox.TabIndex = 44;
-            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1199, 662);
+            this.ClientSize = new System.Drawing.Size(925, 647);
             this.Controls.Add(this.BlacklistGBox);
             this.Controls.Add(this.ExtraIPIDGBox);
             this.Controls.Add(this.StatusGBox);
