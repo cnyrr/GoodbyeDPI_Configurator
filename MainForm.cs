@@ -389,7 +389,7 @@ namespace GoodByeDPI_Configurator
             // Blacklist --blacklist <txtfile>
             // Can be supplied multiple times.
             BlacklistCListBox.DataSource = ProfileManager.CurrentProfile.BlacklistList;
-            ExtraIPIDCListBox.DisplayMember = "Name";
+            BlacklistCListBox.DisplayMember = "Name";
 
             // Update checked status of CheckedListBox's.
             ExtraIPIDCListBox_RestoreCheckedStatus();
@@ -596,7 +596,7 @@ namespace GoodByeDPI_Configurator
             // Let user pick a file.
             OpenFileDialog dialog = new OpenFileDialog
             {
-                Filter = ".txt"
+                Filter = "Text Files(*.txt) | *.txt"
             };
 
             // Add it to the blacklist list.
